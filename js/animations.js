@@ -58,7 +58,7 @@ function animateHero() {
     );
 }
 
-// Section header animations
+// Section header animations - simple fade in
 const sections = document.querySelectorAll(
   ".about, .projects, .skills, .contact"
 );
@@ -71,9 +71,8 @@ sections.forEach((section) => {
       toggleActions: "play none none reverse",
     },
     opacity: 0,
-    y: 60,
-    duration: 1,
-    ease: "power3.out",
+    duration: 0.8,
+    ease: "power2.out",
   });
 });
 
@@ -85,9 +84,9 @@ gsap.from(".about-image", {
     toggleActions: "play none none reverse",
   },
   opacity: 0,
-  x: -60,
-  duration: 1,
-  ease: "power3.out",
+  scale: 0.95,
+  duration: 0.8,
+  ease: "power2.out",
 });
 
 gsap.from(".about-text > *", {
@@ -97,13 +96,12 @@ gsap.from(".about-text > *", {
     toggleActions: "play none none reverse",
   },
   opacity: 0,
-  y: 40,
   duration: 0.8,
   stagger: 0.15,
   ease: "power3.out",
 });
 
-// Project cards animation
+// Project cards animation - simple fade in with scale
 gsap.from(".project-card", {
   scrollTrigger: {
     trigger: ".projects-grid",
@@ -111,13 +109,13 @@ gsap.from(".project-card", {
     toggleActions: "play none none reverse",
   },
   opacity: 0,
-  y: 80,
-  duration: 0.8,
-  stagger: 0.15,
-  ease: "power3.out",
+  scale: 0.95,
+  duration: 0.6,
+  stagger: 0.1,
+  ease: "power2.out",
 });
 
-// Skills animation
+// Skills animation - simple fade in with scale
 gsap.from(".skill-item", {
   scrollTrigger: {
     trigger: ".skills-list",
@@ -125,10 +123,10 @@ gsap.from(".skill-item", {
     toggleActions: "play none none reverse",
   },
   opacity: 0,
-  y: 60,
-  duration: 0.6,
-  stagger: 0.1,
-  ease: "power3.out",
+  scale: 0.95,
+  duration: 0.5,
+  stagger: 0.08,
+  ease: "power2.out",
 });
 
 // Contact animation

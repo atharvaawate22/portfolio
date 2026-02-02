@@ -196,8 +196,8 @@ document.querySelectorAll(".project-card").forEach((card) => {
   });
 
   card.addEventListener("mouseleave", function () {
-    this.style.transform =
-      "perspective(1000px) rotateX(0) rotateY(0) translateY(0)";
+    // Remove inline style to let CSS handle the transition back
+    this.style.transform = "";
   });
 });
 
