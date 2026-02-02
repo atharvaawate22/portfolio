@@ -11,22 +11,34 @@ let cursorX = 0,
 let followerX = 0,
   followerY = 0;
 
+// Check for reduced motion preference
+const prefersReducedMotion = window.matchMedia(
+  "(prefers-reduced-motion: reduce)"
+).matches;
+
 document.addEventListener("mousemove", (e) => {
   mouseX = e.clientX;
   mouseY = e.clientY;
 });
 
 function animateCursor() {
-  // Smooth cursor movement
-  cursorX += (mouseX - cursorX) * 0.2;
-  cursorY += (mouseY - cursorY) * 0.2;
-  followerX += (mouseX - followerX) * 0.1;
-  followerY += (mouseY - followerY) * 0.1;
+  if (prefersReducedMotion) {
+    cursor.style.left = mouseX + "px";
+    cursor.style.top = mouseY + "px";
+    cursorFollower.style.left = mouseX + "px";
+    cursorFollower.style.top = mouseY + "px";
+  } else {
+    // Smooth cursor movement
+    cursorX += (mouseX - cursorX) * 0.2;
+    cursorY += (mouseY - cursorY) * 0.2;
+    followerX += (mouseX - followerX) * 0.1;
+    followerY += (mouseY - followerY) * 0.1;
 
-  cursor.style.left = cursorX + "px";
-  cursor.style.top = cursorY + "px";
-  cursorFollower.style.left = followerX + "px";
-  cursorFollower.style.top = followerY + "px";
+    cursor.style.left = cursorX + "px";
+    cursor.style.top = cursorY + "px";
+    cursorFollower.style.left = followerX + "px";
+    cursorFollower.style.top = followerY + "px";
+  }
 
   requestAnimationFrame(animateCursor);
 }
@@ -879,5 +891,105 @@ const preloadImages = () => {
 };
 
 preloadImages();
+
+// ============================================
+// Premium Enhancement: Hero Parallax Effect
+// ============================================
+if (!prefersReducedMotion) {
+  const heroFloatingShapes = document.querySelectorAll(".floating-shape");
+  const heroSection = document.querySelector(".hero");
+
+  if (heroSection && heroFloatingShapes.length > 0) {
+    document.addEventListener("mousemove", (e) => {
+      const { clientX, clientY } = e;
+      const centerX = window.innerWidth / 2;
+      const centerY = window.innerHeight / 2;
+
+      heroFloatingShapes.forEach((shape, index) => {
+        const speed = (index + 1) * 0.02;
+        const x = (clientX - centerX) * speed;
+        const y = (clientY - centerY) * speed;
+
+        shape.style.transform = `translate(${x}px, ${y}px)`;
+      });
+    });
+  }
+}
+
+// ============================================
+// Premium Enhancement: Card 3D Tilt Effect
+// ============================================
+if (!prefersReducedMotion) {
+  const projectCards = document.querySelectorAll(".project-card");
+
+  projectCards.forEach((card) => {
+    card.addEventListener("mousemove", (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+
+      // Maximum tilt of 5 degrees as per requirements
+      const rotateX = ((y - centerY) / centerY) * -3;
+      const rotateY = ((x - centerX) / centerX) * 3;
+
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px) scale(1.02)`;
+    });
+
+    card.addEventListener("mouseleave", () => {
+      card.style.transform = "";
+    });
+  });
+}
+
+// ============================================
+// Premium Enhancement: Smooth Section Reveal
+// ============================================
+if (!prefersReducedMotion) {
+  // IntersectionObserver for section entrance animations
+  const observerOptions = {
+    root: null,
+    rootMargin: "0px 0px -10% 0px",
+    threshold: 0.1,
+  };
+
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("section-visible");
+        // Only trigger once
+        sectionObserver.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  // Observe all major sections
+  document
+    .querySelectorAll(".about, .projects, .skills, .contact")
+    .forEach((section) => {
+      section.classList.add("section-animate");
+      sectionObserver.observe(section);
+    });
+}
+
+// ============================================
+// Premium Enhancement: Skill Icon Hover Glow
+// ============================================
+if (!prefersReducedMotion) {
+  const skillItems = document.querySelectorAll(".skill-item");
+
+  skillItems.forEach((item) => {
+    item.addEventListener("mousemove", (e) => {
+      const rect = item.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      item.style.setProperty("--mouse-x", `${x}px`);
+      item.style.setProperty("--mouse-y", `${y}px`);
+    });
+  });
+}
 
 console.log("🚀 Portfolio loaded successfully!");

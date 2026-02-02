@@ -4,10 +4,28 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Atharva Awate | Portfolio</title>
-    <link rel="stylesheet" href="styles.css" />
+    <meta
+      name="description"
+      content="Portfolio of Atharva Awate - Web Developer & Creative Coder specializing in interactive 3D experiences and modern web applications."
+    />
+    <meta
+      name="keywords"
+      content="web developer, portfolio, three.js, webgl, react, javascript"
+    />
+    <meta name="author" content="Atharva Awate" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/sections.css" />
+    <link rel="stylesheet" href="css/animations.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
       rel="stylesheet"
+      rel="preconnect"
     />
   </head>
   <body>
@@ -100,6 +118,12 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
+      <!-- Premium: Floating geometric shapes for visual depth -->
+      <div class="hero-floating-shapes" aria-hidden="true">
+        <div class="floating-shape floating-shape--1"></div>
+        <div class="floating-shape floating-shape--2"></div>
+        <div class="floating-shape floating-shape--3"></div>
+      </div>
       <div class="hero-content">
         <div class="hero-title-wrapper">
           <h1 class="hero-title">
@@ -793,6 +817,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
-    <script src="script.js"></script>
+    <script src="js/cursor.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/three-scenes.js"></script>
+    <script src="js/interactions.js"></script>
+    <script src="js/main.js"></script>
   </body>
 </html>
