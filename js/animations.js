@@ -141,6 +141,7 @@ gsap.from(".contact-content > *", {
   duration: 0.8,
   stagger: 0.1,
   ease: "power3.out",
+  immediateRender: false,
 });
 
 // Stats counter animation
