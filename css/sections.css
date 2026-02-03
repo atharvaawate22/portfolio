@@ -1056,23 +1056,11 @@
 .contact-content {
   position: relative;
   z-index: 100;
+  opacity: 1;
+  transform: none;
+  transition: none;
 }
 
-.contact-title {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  margin-bottom: 24px;
-  position: relative;
-  z-index: 10;
-  background: none;
-  pointer-events: auto;
-  opacity: 1;
-  visibility: visible;
-  border: none;
-  color: var(--color-text);
-  /* Ensure heading is always above 3D canvas */
-}
 
 .contact-title span {
   display: block;
