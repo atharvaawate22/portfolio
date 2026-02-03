@@ -6,19 +6,13 @@
 document.addEventListener("DOMContentLoaded", () => {
   // Loader
   const loader = document.querySelector(".loader");
-
-  window.addEventListener("load", () => {
-    setTimeout(() => {
-      if (loader) {
-        loader.classList.add("hidden");
-      }
-
-      // Trigger hero animation after loader
-      if (typeof window.animateHero === "function") {
-        window.animateHero();
-      }
-    }, 1500);
-  });
+  if (loader) {
+    loader.classList.add("hidden");
+  }
+  // Trigger hero animation after loader
+  if (typeof window.animateHero === "function") {
+    window.animateHero();
+  }
 
   // Mobile Menu
   const hamburger = document.querySelector(".hamburger");

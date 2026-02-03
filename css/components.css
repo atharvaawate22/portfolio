@@ -305,13 +305,27 @@
 
 @media (max-width: 768px) {
   .navbar {
-    padding: 20px 24px;
+    padding: 16px 20px;
+  }
+  .nav-logo .logo-text {
+    font-size: 1rem;
+  }
+  .nav-logo .logo-icon svg {
+    width: 28px;
+    height: 28px;
   }
   .nav-links {
     display: none;
   }
   .nav-menu-btn {
     display: flex;
+    padding: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 14px 16px;
   }
 }
 
@@ -348,7 +362,7 @@
 
 .mobile-link {
   font-family: var(--font-primary);
-  font-size: 2.5rem;
+  font-size: clamp(1.75rem, 8vw, 2.5rem);
   font-weight: 600;
   color: var(--color-text);
   opacity: 0;
@@ -398,6 +412,34 @@
   font-size: 0.875rem;
   font-weight: 600;
   letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    background-position 0.5s ease;
+  min-height: 48px;
+}
+
+@media (max-width: 768px) {
+  .btn-primary {
+    padding: 14px 28px;
+    font-size: 0.8rem;
+    min-height: 44px;
+  }
+  .btn-secondary {
+    padding: 14px 28px;
+    font-size: 0.8rem;
+    min-height: 44px;
+  }
+  .btn-outline {
+    padding: 14px 28px;
+    font-size: 0.8rem;
+    min-height: 44px;
+  }
+}
   text-transform: uppercase;
   color: var(--color-text);
   position: relative;
@@ -700,27 +742,57 @@
 
 @media (max-width: 768px) {
   .project-modal {
-    padding: 16px;
+    padding: 12px;
+    align-items: flex-end;
   }
   .modal-content {
-    max-height: 95vh;
+    max-height: 90vh;
+    border-radius: 20px 20px 0 0;
+  }
+  .modal-close {
+    top: 12px;
+    right: 12px;
+    width: 40px;
+    height: 40px;
   }
   .modal-image {
-    height: 200px;
+    height: 180px;
   }
   .modal-info {
-    padding: 24px;
+    padding: 20px;
   }
   .modal-title {
-    font-size: 1.5rem;
+    font-size: 1.35rem;
   }
   .modal-description {
-    font-size: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+  .modal-tags {
+    margin-bottom: 24px;
+  }
+  .modal-tags span {
+    padding: 6px 12px;
+    font-size: 0.8rem;
   }
   .modal-actions {
     flex-direction: column;
+    gap: 12px;
   }
   .modal-btn {
     justify-content: center;
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-modal {
+    padding: 8px;
+  }
+  .modal-image {
+    height: 150px;
+  }
+  .modal-info {
+    padding: 16px;
   }
 }

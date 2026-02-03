@@ -690,4 +690,4 @@ function initContact3D() {
 
 // Initialize 3D scenes
 initHero3D();
-initContact3D();
+// initContact3D will be called after first paint from index.html
