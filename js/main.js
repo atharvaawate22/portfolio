@@ -46,13 +46,8 @@ document.addEventListener("DOMContentLoaded", () => {
       } else {
         navbar.classList.remove("scrolled");
       }
-
-      // Ensure navbar remains visible
-      if (currentScroll > lastScroll && currentScroll > 500) {
-        navbar.style.transform = "translateY(0)"; // Keep navbar visible
-      } else {
-        navbar.style.transform = "translateY(0)";
-      }
+      // Remove transform logic entirely
+      navbar.style.transform = "";
     }
 
     lastScroll = currentScroll;
