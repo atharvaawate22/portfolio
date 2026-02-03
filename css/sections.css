@@ -1073,7 +1073,6 @@
   color: var(--color-text);
   /* Ensure heading is always above 3D canvas */
 }
-}
 
 .contact-title span {
   display: block;
