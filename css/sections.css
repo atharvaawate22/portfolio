@@ -1,3 +1,12 @@
+/* Let's work together heading styles */
+.lw-white {
+  color: var(--color-text);
+  font-weight: 700;
+}
+.lw-blue {
+  color: var(--color-gradient-1);
+  font-weight: 700;
+}
 /* ============================================
    Sections - Page Sections Styling
    ============================================ */
@@ -234,17 +243,64 @@
 
 @media (max-width: 768px) {
   .hero {
-    padding: 120px 24px 80px;
+    padding: 100px 20px 60px;
+    min-height: calc(100vh - 70px);
+    min-height: calc(100dvh - 70px);
   }
   .hero-3d {
     width: 100%;
-    opacity: 0.3;
+    opacity: 0.2;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+  }
+  .hero-content {
+    max-width: 100%;
+  }
+  .hero-title {
+    font-size: clamp(2.5rem, 12vw, 4rem);
   }
   .hero-cta {
     flex-direction: column;
+    width: 100%;
+  }
+  .hero-cta .btn-primary,
+  .hero-cta .btn-secondary {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
   }
   .hero-scroll {
-    left: 24px;
+    left: 20px;
+    bottom: 20px;
+  }
+  .hero-bg-text {
+    font-size: clamp(4rem, 20vw, 8rem);
+    left: 50%;
+    bottom: 10%;
+  }
+  .hero-description {
+    max-width: 100%;
+  }
+  .hero-description p {
+    font-size: 1rem;
+  }
+  .subtitle-line {
+    font-size: clamp(0.75rem, 2.5vw, 1rem);
+    letter-spacing: 0.15em;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 90px 16px 50px;
+  }
+  .hero-title {
+    font-size: clamp(2rem, 14vw, 3rem);
+  }
+  .hero-scroll {
+    left: 16px;
   }
 }
 
@@ -426,14 +482,56 @@
 
 @media (max-width: 768px) {
   .about {
-    padding: 80px 24px;
+    padding: 60px 20px;
+  }
+  .about-content {
+    gap: 32px;
+  }
+  .image-wrapper {
+    max-width: 280px;
+    margin: 0 auto;
+  }
+  .image-placeholder span {
+    font-size: 6rem;
+  }
+  .about-intro {
+    font-size: 1.25rem;
+  }
+  .about-description {
+    font-size: 1rem;
+    margin-bottom: 32px;
+  }
+  .about-stats {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+  .stat {
+    padding: 16px 12px;
+  }
+  .stat-number {
+    font-size: 1.75rem;
+  }
+  .stat-label {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .about {
+    padding: 50px 16px;
   }
   .about-stats {
     grid-template-columns: 1fr;
-    gap: 16px;
+    gap: 12px;
   }
   .stat {
-    padding: 24px;
+    padding: 20px;
+  }
+  .stat-number {
+    font-size: 2rem;
+  }
+  .stat-label {
+    font-size: 0.75rem;
   }
 }
 
@@ -674,35 +772,82 @@
     gap: 24px;
   }
   .project-card {
-    height: 350px;
+    height: auto;
+    min-height: 350px;
+    display: flex;
+    flex-direction: column;
   }
   .project-image {
+    position: relative;
     height: 180px;
+    flex-shrink: 0;
   }
   .project-info {
-    height: 170px;
+    position: relative;
+    height: auto;
+    flex-grow: 1;
+    min-height: 170px;
   }
 }
 
 @media (max-width: 768px) {
   .projects {
-    padding: 80px 24px;
+    padding: 60px 20px;
+  }
+  .projects-grid {
+    gap: 20px;
   }
   .project-card {
-    height: 320px;
+    height: auto;
+    min-height: 300px;
   }
   .project-image {
-    height: 160px;
+    position: relative;
+    height: 150px;
   }
   .project-info {
-    height: 160px;
+    position: relative;
+    height: auto;
+    min-height: 150px;
     padding: 20px;
   }
   .project-title {
-    font-size: 1.25rem;
+    font-size: 1.15rem;
+    margin-bottom: 8px;
+  }
+  .project-description {
+    font-size: 0.875rem;
+    margin-bottom: 12px;
+    line-height: 1.5;
   }
   .project-placeholder span {
-    font-size: 3rem;
+    font-size: 2.5rem;
+  }
+  .project-tags {
+    gap: 6px;
+  }
+  .project-tags span {
+    padding: 6px 10px;
+    font-size: 0.7rem;
+  }
+  .view-project {
+    padding: 10px 20px;
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .projects {
+    padding: 50px 16px;
+  }
+  .project-card {
+    min-height: 280px;
+  }
+  .project-image {
+    height: 130px;
+  }
+  .project-info {
+    padding: 16px;
   }
 }
 
@@ -723,10 +868,12 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 32px;
+  align-items: stretch;
 }
 
 .skill-item {
   display: flex;
+  flex-direction: row;
   gap: 20px;
   padding: 32px;
   background: rgba(255, 255, 255, 0.02);
@@ -740,6 +887,10 @@
     transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
     background 0.3s ease,
     box-shadow 0.4s ease;
+  min-height: 180px;
+  max-height: 220px;
+  height: 100%;
+  box-sizing: border-box;
 }
 
 .skill-item::before {
@@ -839,13 +990,55 @@
 
 @media (max-width: 768px) {
   .skills {
-    padding: 80px 24px;
+    padding: 60px 20px;
+  }
+  .skills-content {
+    gap: 40px;
   }
   .skills-list {
     grid-template-columns: 1fr;
+    gap: 16px;
   }
   .skill-item {
-    padding: 24px;
+    padding: 20px;
+    min-height: auto;
+    max-height: none;
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  .skill-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    flex-shrink: 0;
+  }
+  .skill-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+  .skill-info h3 {
+    font-size: 1rem;
+    margin-bottom: 4px;
+  }
+  .skill-info p {
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
+  .skills-marquee {
+    padding: 16px 0;
+  }
+  .marquee-track span {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .skills {
+    padding: 50px 16px;
+  }
+  .skill-item {
+    padding: 16px;
+    gap: 16px;
   }
 }
 
@@ -862,7 +1055,7 @@
 
 .contact-content {
   position: relative;
-  z-index: 5;
+  z-index: 100;
 }
 
 .contact-title {
@@ -871,7 +1064,19 @@
   gap: 0;
   margin-bottom: 24px;
   position: relative;
-  z-index: 10;
+  z-index: 9999;
+  background: none;
+  pointer-events: auto;
+  /* Ensure 3D canvas stays in the background */
+  .contact-sphere canvas {
+    position: absolute !important;
+    z-index: 0 !important;
+    left: 0;
+    top: 0;
+    width: 100% !important;
+    height: 100% !important;
+    pointer-events: none;
+  }
   opacity: 1;
   visibility: visible;
   background: none;
@@ -882,7 +1087,6 @@
 
 .contact-title span {
   display: block;
-  color: var(--color-text);
   background: none;
   border: none;
   opacity: 1;
@@ -890,14 +1094,11 @@
 }
 
 .contact-title span:last-child {
-  background: linear-gradient(
-    135deg,
-    var(--color-gradient-1),
-    var(--color-gradient-2)
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  background: none;
+  color: #a8a6ff;
+  text-shadow:
+    0 2px 8px rgba(108, 99, 255, 0.4),
+    0 1px 0 #fff;
 }
 
 .contact-description {
@@ -987,6 +1188,7 @@
 
 .contact-visual {
   position: relative;
+  z-index: 1;
   height: 550px;
   display: flex;
   align-items: center;
@@ -1058,7 +1260,18 @@
 
 @media (max-width: 768px) {
   .contact {
-    padding: 60px 24px;
+    padding: 60px 20px;
+    min-height: auto;
+  }
+  .contact-content {
+    text-align: center;
+  }
+  .contact-title {
+    justify-content: center;
+  }
+  .section-title.contact-title {
+    font-size: clamp(1.75rem, 8vw, 2.5rem);
+    text-align: center;
   }
   .contact-links {
     flex-direction: column;
@@ -1066,13 +1279,31 @@
   }
   .contact-link {
     justify-content: center;
-    padding: 16px 28px;
+    padding: 14px 24px;
+  }
+  .link-text {
+    font-size: 0.9rem;
   }
   .contact-visual {
-    height: 350px;
+    height: 280px;
   }
   .contact-description {
-    font-size: 1.1rem;
+    font-size: 1rem;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact {
+    padding: 50px 16px;
+  }
+  .contact-visual {
+    height: 220px;
+  }
+  .contact-link {
+    padding: 12px 20px;
   }
 }
 
@@ -1141,14 +1372,27 @@
 
 @media (max-width: 768px) {
   .footer {
-    padding: 24px;
+    padding: 20px;
   }
   .footer-content {
     flex-direction: column;
-    gap: 16px;
+    gap: 12px;
     text-align: center;
+  }
+  .footer-left span,
+  .footer-center span {
+    font-size: 0.8rem;
   }
   .footer-center {
     order: 3;
+  }
+  .back-to-top {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 16px;
   }
 }

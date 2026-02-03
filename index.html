@@ -2,17 +2,71 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Atharva Awate | Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#0a0a0a" />
+    <title>Atharva Awate - Web Developer & Creative Coder | Official Website</title>
     <meta
       name="description"
-      content="Portfolio of Atharva Awate - Web Developer & Creative Coder specializing in interactive 3D experiences and modern web applications."
+      content="Atharva Awate is a Web Developer and Creative Coder based in Pune, India. Specializing in interactive 3D experiences, Three.js, WebGL, and modern web applications."
     />
     <meta
       name="keywords"
-      content="web developer, portfolio, three.js, webgl, react, javascript"
+      content="Atharva Awate, web developer, creative coder, portfolio, three.js, webgl, react, javascript, Pune"
     />
     <meta name="author" content="Atharva Awate" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://atharvaawate.me/" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://atharvaawate.me/" />
+    <meta property="og:title" content="Atharva Awate - Web Developer & Creative Coder" />
+    <meta property="og:description" content="Atharva Awate is a Web Developer and Creative Coder based in Pune, India. Specializing in interactive 3D experiences and modern web applications." />
+    <meta property="og:site_name" content="Atharva Awate" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://atharvaawate.me/" />
+    <meta name="twitter:title" content="Atharva Awate - Web Developer & Creative Coder" />
+    <meta name="twitter:description" content="Atharva Awate is a Web Developer and Creative Coder based in Pune, India. Specializing in interactive 3D experiences and modern web applications." />
+
+    <!-- Person Schema (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Atharva Awate",
+      "url": "https://atharvaawate.me",
+      "jobTitle": "Web Developer & Creative Coder",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Pune",
+        "addressCountry": "India"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/in/atharva-d-awate",
+        "https://github.com/Atharva12210985"
+      ],
+      "knowsAbout": ["Web Development", "Three.js", "WebGL", "JavaScript", "React", "Creative Coding"]
+    }
+    </script>
+
+    <!-- Website Schema (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Atharva Awate",
+      "url": "https://atharvaawate.me",
+      "description": "Official personal website of Atharva Awate - Web Developer & Creative Coder",
+      "author": {
+        "@type": "Person",
+        "name": "Atharva Awate"
+      }
+    }
+    </script>
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
@@ -50,6 +104,14 @@
         </div>
       </div>
     </div>
+
+    <!-- Hide loader as soon as DOM is ready -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var loader = document.querySelector(".loader");
+        if (loader) loader.classList.add("hidden");
+      });
+    </script>
 
     <!-- Navigation -->
     <nav class="navbar">
@@ -126,11 +188,12 @@
       </div>
       <div class="hero-content">
         <div class="hero-title-wrapper">
-          <h1 class="hero-title">
-            <div class="title-line">
+          <h1 class="hero-title" aria-label="Atharva Awate">
+            <span class="sr-only">Atharva Awate</span>
+            <div class="title-line" aria-hidden="true">
               <span class="title-word">Atharva</span>
             </div>
-            <div class="title-line">
+            <div class="title-line" aria-hidden="true">
               <span class="title-word">Awate</span>
             </div>
           </h1>
@@ -175,10 +238,10 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="about">
+    <section id="about" class="about" aria-labelledby="about-heading">
       <div class="section-header">
         <span class="section-label">01</span>
-        <h2 class="section-title">About Me</h2>
+        <h2 class="section-title" id="about-heading">About Atharva Awate</h2>
       </div>
       <div class="about-content">
         <div class="about-image">
@@ -208,7 +271,7 @@
         </div>
         <div class="about-text">
           <p class="about-intro">
-            Hello! I'm a passionate web developer who loves creating immersive
+            Hello! I'm <strong>Atharva Awate</strong>, a passionate web developer who loves creating immersive
             digital experiences. I specialize in building interactive 3D
             websites, real-time applications, and modern web solutions.
           </p>
@@ -589,8 +652,8 @@
         <div class="section-header">
           <span class="section-label">04</span>
           <h2 class="section-title contact-title">
-            <span>Let's work</span>
-            <span>together!</span>
+            <span class="lw-white">Let's work</span><br />
+            <span class="lw-blue">together!</span>
           </h2>
         </div>
         <p class="contact-description">
@@ -789,14 +852,34 @@
     </div>
 
     <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
-    <script src="js/cursor.js"></script>
-    <script src="js/animations.js"></script>
-    <script src="js/three-scenes.js"></script>
-    <script src="js/interactions.js"></script>
-    <script src="js/main.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"
+      defer
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"
+      defer
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"
+      defer
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"
+      defer
+    ></script>
+    <script src="js/cursor.js" defer></script>
+    <script src="js/animations.js" defer></script>
+    <script src="js/three-scenes.js" defer></script>
+    <script src="js/interactions.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <script>
+      // Defer 3D scene initialization to allow DOM paint
+      window.addEventListener("DOMContentLoaded", function () {
+        setTimeout(() => {
+          if (window.initContact3D) window.initContact3D();
+        }, 0);
+      });
+    </script>
   </body>
 </html>

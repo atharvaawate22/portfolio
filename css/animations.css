@@ -200,3 +200,43 @@
   opacity: 1;
   transform: translateY(0);
 }
+
+/* Reduce motion on mobile for performance */
+@media (max-width: 768px) {
+  .reveal {
+    transform: translateY(30px);
+  }
+  .section-animate {
+    transform: translateY(20px);
+  }
+  .floating-shape {
+    animation-duration: 30s;
+  }
+}
+
+/* Touch device improvements - disable hover effects that cause issues */
+@media (hover: none) and (pointer: coarse) {
+  .project-card:hover {
+    transform: none;
+  }
+  .project-card:active {
+    transform: scale(0.98);
+  }
+  .stat:hover {
+    transform: none;
+  }
+  .skill-item:hover {
+    transform: none;
+  }
+  .contact-link:hover {
+    transform: none;
+  }
+  .btn-primary:hover,
+  .btn-secondary:hover,
+  .btn-outline:hover {
+    transform: none;
+  }
+  .nav-link:hover {
+    transform: none;
+  }
+}
