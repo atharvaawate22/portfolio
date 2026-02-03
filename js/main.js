@@ -37,11 +37,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const navbar = document.querySelector(".navbar");
   let lastScroll = 0;
 
-  // Ensure navbar is always visible on page load
-  if (navbar) {
-    navbar.style.transform = "";
-  }
-
   window.addEventListener("scroll", () => {
     const currentScroll = window.pageYOffset;
 
@@ -51,8 +46,12 @@ document.addEventListener("DOMContentLoaded", () => {
       } else {
         navbar.classList.remove("scrolled");
       }
-      // Always reset transform
-      navbar.style.transform = "";
+
+      if (currentScroll > lastScroll && currentScroll > 500) {
+        navbar.style.transform = "translateY(-100%)";
+      } else {
+        navbar.style.transform = "translateY(0)";
+      }
     }
 
     lastScroll = currentScroll;
