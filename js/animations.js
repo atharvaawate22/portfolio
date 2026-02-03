@@ -130,18 +130,17 @@ gsap.from(".skill-item", {
 });
 
 // Contact animation
-gsap.from(".contact-content > *", {
+gsap.to(".contact-content > *", {
   scrollTrigger: {
     trigger: ".contact",
     start: "top 70%",
     toggleActions: "play none none none",
   },
-  opacity: 0,
-  y: 40,
+  opacity: 1,
+  y: 0,
   duration: 0.8,
   stagger: 0.1,
   ease: "power3.out",
-  immediateRender: false,
 });
 
 // Stats counter animation
