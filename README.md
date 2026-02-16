@@ -2,8 +2,6 @@
 
 A modern, interactive portfolio website featuring 3D elements, smooth animations, and premium visual effects.
 
-![Portfolio Preview](assets/preview.png)
-
 ## ✨ Features
 
 - **3D Interactive Elements** - Three.js powered geometric shapes and particle systems
@@ -119,5 +117,3 @@ MIT License - feel free to use this template for your own portfolio!
 - Email: atharvaawate14@gmail.com
 
 ---
-
-⭐ Star this repo if you found it helpful!
