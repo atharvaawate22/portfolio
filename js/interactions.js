@@ -13,32 +13,19 @@ function openProjectModal(projectId) {
   // Project data
   const projects = {
     1: {
-      title: "Portfolio Website",
+      title: "Personal Portfolio",
       description:
-        "A modern, responsive portfolio showcasing creative work with smooth animations and 3D elements.",
+        "A fully custom portfolio built with vanilla HTML, CSS, and JavaScript — featuring real-time 3D scenes (Three.js), scroll-triggered animations (GSAP), a custom magnetic cursor, and a responsive dark-theme UI. Deployed at atharvaawate.me.",
       tech: ["HTML5", "CSS3", "JavaScript", "Three.js", "GSAP"],
-      features: [
-        "Responsive design for all devices",
-        "Interactive 3D graphics",
-        "Smooth scroll animations",
-        "Dark theme with gradient accents",
-      ],
-      image:
-        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800",
-      link: "#",
-      github: "#",
+      image: "/assets/portfolio-preview.png",
+      link: "https://atharvaawate.me",
+      github: "https://github.com/atharvaawate22/portfolio",
     },
     2: {
       title: "E-Commerce Platform",
       description:
         "Full-stack e-commerce solution with real-time inventory management and secure payments.",
       tech: ["React", "Node.js", "MongoDB", "Stripe", "Redux"],
-      features: [
-        "User authentication & authorization",
-        "Shopping cart functionality",
-        "Payment integration",
-        "Admin dashboard",
-      ],
       image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800",
       link: "#",
       github: "#",
@@ -48,12 +35,6 @@ function openProjectModal(projectId) {
       description:
         "Analytics dashboard with machine learning insights and real-time data visualization.",
       tech: ["Python", "TensorFlow", "React", "D3.js", "FastAPI"],
-      features: [
-        "Real-time data processing",
-        "ML model integration",
-        "Interactive charts",
-        "Export functionality",
-      ],
       image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800",
       link: "#",
       github: "#",
@@ -63,14 +44,7 @@ function openProjectModal(projectId) {
       description:
         "Mobile-first social platform with real-time messaging and content sharing features.",
       tech: ["React Native", "Firebase", "Node.js", "Socket.io"],
-      features: [
-        "Real-time messaging",
-        "Image/video sharing",
-        "Push notifications",
-        "User profiles",
-      ],
-      image:
-        "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800",
+      image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800",
       link: "#",
       github: "#",
     },
@@ -79,14 +53,7 @@ function openProjectModal(projectId) {
       description:
         "Real-time cryptocurrency tracking with portfolio management and price alerts.",
       tech: ["Vue.js", "Chart.js", "CoinGecko API", "PWA"],
-      features: [
-        "Live price updates",
-        "Portfolio tracking",
-        "Price alerts",
-        "Historical data charts",
-      ],
-      image:
-        "https://images.unsplash.com/photo-1621761191319-c6fb62004040?w=800",
+      image: "https://images.unsplash.com/photo-1621761191319-c6fb62004040?w=800",
       link: "#",
       github: "#",
     },
@@ -95,14 +62,7 @@ function openProjectModal(projectId) {
       description:
         "Collaborative project management tool with kanban boards and team features.",
       tech: ["Angular", "NestJS", "PostgreSQL", "WebSocket"],
-      features: [
-        "Drag-and-drop kanban",
-        "Team collaboration",
-        "File attachments",
-        "Activity timeline",
-      ],
-      image:
-        "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800",
+      image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800",
       link: "#",
       github: "#",
     },
@@ -111,33 +71,47 @@ function openProjectModal(projectId) {
   const project = projects[projectId];
   if (!project) return;
 
-  // Populate modal
-  const modalImage = projectModal.querySelector(".modal-image img");
-  const modalTitle = projectModal.querySelector(".modal-title");
-  const modalDescription = projectModal.querySelector(".modal-description");
-  const techTags = projectModal.querySelector(".tech-tags");
-  const featuresList = projectModal.querySelector(".features-list");
-  const liveLink = projectModal.querySelector(".project-link.primary");
-  const githubLink = projectModal.querySelector(".project-link.secondary");
+  // Populate modal — use document-level lookups for reliable ID resolution
+  const modalImage = document.querySelector("#modalImage img");
+  const modalTitle = document.getElementById("modalTitle");
+  const modalDescription = document.getElementById("modalDescription");
+  const techTags = document.getElementById("modalTags");
+  const liveLink = document.getElementById("modalLiveBtn");
+  const githubLink = document.getElementById("modalGithubBtn");
 
-  if (modalImage) modalImage.src = project.image;
+  if (modalImage) { modalImage.src = project.image; modalImage.alt = project.title + " preview"; }
   if (modalTitle) modalTitle.textContent = project.title;
   if (modalDescription) modalDescription.textContent = project.description;
 
   if (techTags) {
     techTags.innerHTML = project.tech
-      .map((tech) => `<span class="tech-tag">${tech}</span>`)
+      .map((tech) => `<span>${tech}</span>`)
       .join("");
   }
 
-  if (featuresList) {
-    featuresList.innerHTML = project.features
-      .map((feature) => `<li>${feature}</li>`)
-      .join("");
+  if (liveLink) {
+    liveLink.onclick = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      if (project.link && project.link !== "#") {
+        window.open(project.link, "_blank", "noopener,noreferrer");
+      }
+    };
+    liveLink.style.opacity = project.link !== "#" ? "1" : "0.4";
+    liveLink.style.cursor = project.link !== "#" ? "pointer" : "not-allowed";
   }
 
-  if (liveLink) liveLink.href = project.link;
-  if (githubLink) githubLink.href = project.github;
+  if (githubLink) {
+    githubLink.onclick = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      if (project.github && project.github !== "#") {
+        window.open(project.github, "_blank", "noopener,noreferrer");
+      }
+    };
+    githubLink.style.opacity = project.github !== "#" ? "1" : "0.4";
+    githubLink.style.cursor = project.github !== "#" ? "pointer" : "not-allowed";
+  }
 
   // Show modal
   projectModal.classList.add("active");

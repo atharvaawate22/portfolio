@@ -1,6 +1,7 @@
 /* ============================================
    Three.js Scenes - 3D visualizations
    ============================================ */
+import * as THREE from 'three';
 
 // Hero 3D Scene
 function initHero3D() {
@@ -695,9 +696,4 @@ function initContact3D() {
 
 // Initialize 3D scenes
 initHero3D();
-
-// Export so index.html inline script can call it if needed,
-// but we also call it here directly since all deferred scripts
-// run after DOMContentLoaded anyway.
-window.initContact3D = initContact3D;
 initContact3D();
