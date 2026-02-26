@@ -84,45 +84,4 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   window.addEventListener("scroll", highlightNavLink);
-
-  // Contact Form
-  const contactForm = document.getElementById("contact-form");
-  if (contactForm) {
-    contactForm.addEventListener("submit", (e) => {
-      e.preventDefault();
-
-      const formData = new FormData(contactForm);
-      const data = Object.fromEntries(formData);
-
-
-      // Show success message
-      const btn = contactForm.querySelector('button[type="submit"]');
-      const originalText = btn.innerHTML;
-      btn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
-      btn.style.background = "linear-gradient(135deg, #10b981, #059669)";
-
-      setTimeout(() => {
-        btn.innerHTML = originalText;
-        btn.style.background = "";
-        contactForm.reset();
-      }, 3000);
-    });
-  }
-
-  // Section Reveal Animation (Premium enhancement)
-  const revealSections = document.querySelectorAll(".section-reveal");
-  if (revealSections.length > 0) {
-    const revealObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("revealed");
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
-    );
-
-    revealSections.forEach((section) => revealObserver.observe(section));
-  }
 });

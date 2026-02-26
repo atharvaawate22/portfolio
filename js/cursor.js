@@ -65,5 +65,4 @@ if (window.matchMedia('(pointer: fine)').matches) {
   });
 }
 
-// Export for use in other modules
-window.cursorModule = { cursor, cursorFollower, prefersReducedMotion };
+

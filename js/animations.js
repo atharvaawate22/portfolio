@@ -180,17 +180,6 @@ gsap.to(".hero-bg-text", {
   ease: "none",
 });
 
-// Text reveal on scroll
-const revealElements = document.querySelectorAll(".reveal");
-
-revealElements.forEach((el) => {
-  ScrollTrigger.create({
-    trigger: el,
-    start: "top 85%",
-    onEnter: () => el.classList.add("active"),
-    onLeaveBack: () => el.classList.remove("active"),
-  });
-});
 
 // Smooth scroll for anchor links
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
