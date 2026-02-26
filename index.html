@@ -19,18 +19,18 @@
     <meta name="author" content="Atharva Awate" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" sizes="any" href="/assets/favicon.svg" />
-    <link rel="icon" type="image/png" sizes="96x96" href="/favicon.png" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="css/base.css" />
     <link rel="stylesheet" href="css/components.css" />
     <link rel="stylesheet" href="css/sections.css" />
     <link rel="stylesheet" href="css/animations.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
       rel="stylesheet"
-      rel="preconnect"
     />
   </head>
   <body>
@@ -113,10 +113,10 @@
         <a href="#skills" class="nav-link" data-text="Skills">Skills</a>
         <a href="#contact" class="nav-link" data-text="Contact">Contact</a>
       </div>
-      <div class="nav-menu-btn">
+      <button class="nav-menu-btn" aria-label="Open navigation menu" aria-expanded="false">
         <span></span>
         <span></span>
-      </div>
+      </button>
     </nav>
 
     <!-- Mobile Menu -->
@@ -644,6 +644,7 @@
           <a
             href="https://github.com/Atharva12210985"
             target="_blank"
+            rel="noopener noreferrer"
             class="contact-link"
           >
             <span class="link-icon">
@@ -669,6 +670,7 @@
           <a
             href="https://www.linkedin.com/in/atharva-d-awate"
             target="_blank"
+            rel="noopener noreferrer"
             class="contact-link"
           >
             <span class="link-icon">
@@ -703,7 +705,7 @@
     <footer class="footer">
       <div class="footer-content">
         <div class="footer-left">
-          <span>© 2026 Atharva Awate</span>
+          <span>© <script>document.write(new Date().getFullYear())</script> Atharva Awate</span>
         </div>
         <div class="footer-center">
           <span>Built with passion & creativity</span>
@@ -730,7 +732,7 @@
     </footer>
 
     <!-- Project Modal -->
-    <div class="project-modal" id="projectModal">
+    <div class="project-modal" id="project-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
       <div class="modal-overlay"></div>
       <div class="modal-content">
         <button class="modal-close" aria-label="Close modal">
@@ -762,6 +764,7 @@
               class="btn-primary modal-btn"
               id="modalLiveBtn"
               target="_blank"
+              rel="noopener noreferrer"
             >
               <span>View Live</span>
               <svg
@@ -787,6 +790,7 @@
               class="btn-secondary modal-btn"
               id="modalGithubBtn"
               target="_blank"
+              rel="noopener noreferrer"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -814,18 +818,26 @@
     <!-- Scripts -->
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"
+      integrity="sha512-dLxUelApnYxpLt6K2iomGngnHO83iUvZytA3YjDUCjT0HDOHKXnVYdf3hU4JjM8uEhxf9nD1/ey98U3t2vZ0qQ=="
+      crossorigin="anonymous"
       defer
     ></script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"
+      integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug=="
+      crossorigin="anonymous"
       defer
     ></script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"
+      integrity="sha512-Ic9xkERjyZ1xgJ5svx3y0u3xrvfT/uPkV99LBwe68xjy/mGtO+4eURHZBW2xW4SZbFrF1Tf090XqB+EVgXnVjw=="
+      crossorigin="anonymous"
       defer
     ></script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"
+      integrity="sha512-v/m68W+vaGN/6igoyFpd4GlQzu0jx9/n5gr2PKq5vif+RObyGKHse384YHrOULaxZ810XhlHUrmB3U8UnPB19Q=="
+      crossorigin="anonymous"
       defer
     ></script>
     <script src="js/cursor.js" defer></script>
@@ -833,21 +845,19 @@
     <script src="js/three-scenes.js" defer></script>
     <script src="js/interactions.js" defer></script>
     <script src="js/main.js" defer></script>
-    <script>
-      // Defer 3D scene initialization to allow DOM paint
-      window.addEventListener("DOMContentLoaded", function () {
-        setTimeout(() => {
-          if (window.initContact3D) window.initContact3D();
-        }, 0);
-      });
-    </script>
+    <!-- Contact 3D scene is initialised directly in three-scenes.js -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Organization",
+      "@type": "Person",
       "name": "Atharva Awate",
       "url": "https://atharvaawate.me/",
-      "logo": "https://atharvaawate.me/assets/favicon.svg"
+      "image": "https://atharvaawate.me/assets/favicon.svg",
+      "sameAs": [
+        "https://github.com/Atharva12210985",
+        "https://www.linkedin.com/in/atharva-d-awate"
+      ],
+      "jobTitle": "Web Developer"
     }
     </script>
   </body>

@@ -42,24 +42,28 @@ function animateCursor() {
   requestAnimationFrame(animateCursor);
 }
 
-// Initialize cursor animation
-animateCursor();
+// Only run custom cursor on devices with a precise pointer (mouse/trackpad)
+if (window.matchMedia('(pointer: fine)').matches) {
+  animateCursor();
+}
 
 // Cursor hover effects
 const hoverElements = document.querySelectorAll(
   "a, button, .project-card, .skill-item, .stat"
 );
 
-hoverElements.forEach((el) => {
-  el.addEventListener("mouseenter", () => {
-    cursor.classList.add("hover");
-    cursorFollower.classList.add("hover");
+if (window.matchMedia('(pointer: fine)').matches) {
+  hoverElements.forEach((el) => {
+    el.addEventListener("mouseenter", () => {
+      cursor.classList.add("hover");
+      cursorFollower.classList.add("hover");
+    });
+    el.addEventListener("mouseleave", () => {
+      cursor.classList.remove("hover");
+      cursorFollower.classList.remove("hover");
+    });
   });
-  el.addEventListener("mouseleave", () => {
-    cursor.classList.remove("hover");
-    cursorFollower.classList.remove("hover");
-  });
-});
+}
 
 // Export for use in other modules
 window.cursorModule = { cursor, cursorFollower, prefersReducedMotion };

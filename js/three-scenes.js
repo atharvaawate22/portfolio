@@ -100,12 +100,15 @@ function initHero3D() {
   }
   animate();
 
-  // Resize handler
-  window.addEventListener("resize", () => {
+  // Resize handler — stored so it can be removed if scene is torn down
+  function onHeroResize() {
     camera.aspect = container.clientWidth / container.clientHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(container.clientWidth, container.clientHeight);
-  });
+  }
+  window.addEventListener("resize", onHeroResize);
+  // Expose cleanup for dev/hot-reload scenarios
+  initHero3D.cleanup = () => window.removeEventListener("resize", onHeroResize);
 }
 
 /* ============================================
@@ -680,14 +683,21 @@ function initContact3D() {
   }
   animate();
 
-  // Resize handler
-  window.addEventListener("resize", () => {
+  // Resize handler — stored so it can be removed if scene is torn down
+  function onContactResize() {
     camera.aspect = container.clientWidth / container.clientHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(container.clientWidth, container.clientHeight);
-  });
+  }
+  window.addEventListener("resize", onContactResize);
+  initContact3D.cleanup = () => window.removeEventListener("resize", onContactResize);
 }
 
 // Initialize 3D scenes
 initHero3D();
-// initContact3D will be called after first paint from index.html
+
+// Export so index.html inline script can call it if needed,
+// but we also call it here directly since all deferred scripts
+// run after DOMContentLoaded anyway.
+window.initContact3D = initContact3D;
+initContact3D();
