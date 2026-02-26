@@ -153,13 +153,13 @@ stats.forEach((stat) => {
     trigger: stat,
     start: "top 85%",
     onEnter: () => {
-      gsap.to(stat, {
-        innerHTML: target,
+      const counter = { val: 0 };
+      gsap.to(counter, {
+        val: target,
         duration: 2,
         ease: "power2.out",
-        snap: { innerHTML: 1 },
-        onUpdate: function () {
-          stat.innerHTML = Math.floor(this.targets()[0].innerHTML);
+        onUpdate: () => {
+          stat.textContent = Math.floor(counter.val);
         },
       });
     },

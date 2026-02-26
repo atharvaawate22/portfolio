@@ -15,20 +15,22 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Mobile Menu
-  const hamburger = document.querySelector(".hamburger");
+  const hamburger = document.querySelector(".nav-menu-btn");
   const navLinks = document.querySelector(".nav-links");
   const navLinksItems = document.querySelectorAll(".nav-links a");
 
   if (hamburger && navLinks) {
     hamburger.addEventListener("click", () => {
-      hamburger.classList.toggle("active");
+      const isOpen = hamburger.classList.toggle("active");
       navLinks.classList.toggle("active");
+      hamburger.setAttribute("aria-expanded", isOpen);
     });
 
     navLinksItems.forEach((link) => {
       link.addEventListener("click", () => {
         hamburger.classList.remove("active");
         navLinks.classList.remove("active");
+        hamburger.setAttribute("aria-expanded", "false");
       });
     });
   }
@@ -92,7 +94,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const formData = new FormData(contactForm);
       const data = Object.fromEntries(formData);
 
-      console.log("Form submitted:", data);
 
       // Show success message
       const btn = contactForm.querySelector('button[type="submit"]');
@@ -105,54 +106,6 @@ document.addEventListener("DOMContentLoaded", () => {
         btn.style.background = "";
         contactForm.reset();
       }, 3000);
-    });
-  }
-
-  // Typing Effect for Hero
-  const typingElement = document.querySelector(".typing-text");
-  if (typingElement) {
-    const texts = ["Full Stack Developer", "UI/UX Designer", "Creative Coder"];
-    let textIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-
-    function typeEffect() {
-      const currentText = texts[textIndex];
-
-      if (isDeleting) {
-        typingElement.textContent = currentText.substring(0, charIndex - 1);
-        charIndex--;
-      } else {
-        typingElement.textContent = currentText.substring(0, charIndex + 1);
-        charIndex++;
-      }
-
-      let typeSpeed = isDeleting ? 50 : 100;
-
-      if (!isDeleting && charIndex === currentText.length) {
-        typeSpeed = 2000;
-        isDeleting = true;
-      } else if (isDeleting && charIndex === 0) {
-        isDeleting = false;
-        textIndex = (textIndex + 1) % texts.length;
-        typeSpeed = 500;
-      }
-
-      setTimeout(typeEffect, typeSpeed);
-    }
-
-    setTimeout(typeEffect, 2000);
-  }
-
-  // Parallax Background Layers (Premium enhancement)
-  const parallaxLayers = document.querySelectorAll(".parallax-layer");
-  if (parallaxLayers.length > 0) {
-    window.addEventListener("scroll", () => {
-      const scrolled = window.pageYOffset;
-      parallaxLayers.forEach((layer) => {
-        const speed = layer.dataset.speed || 0.5;
-        layer.style.transform = `translateY(${scrolled * speed}px)`;
-      });
     });
   }
 
