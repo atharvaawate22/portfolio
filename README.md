@@ -4,9 +4,9 @@ A modern, interactive portfolio website featuring 3D elements, smooth animations
 
 ## ✨ Features
 
-- **3D Interactive Elements** - Three.js powered geometric shapes and particle systems
+- **3D Interactive Elements** - Three.js powered geometric shapes and 3D scenes
 - **Smooth Animations** - GSAP-powered scroll animations and transitions
-- **Premium Visual Effects** - Parallax layers, floating shapes, gradient overlays
+- **Premium Visual Effects** - Custom cursor with magnetic effects, gradient overlays
 - **Custom Cursor** - Interactive cursor with hover effects
 - **Responsive Design** - Fully optimized for all devices
 - **Accessibility** - Respects `prefers-reduced-motion` preferences
@@ -29,7 +29,9 @@ Portfolio/
 │   ├── interactions.js     # UI interactions (modal, tilt, magnetic)
 │   └── main.js             # Core initialization & utilities
 ├── assets/
-│   └── favicon.svg         # Site favicon
+│   ├── favicon.svg         # Site favicon (SVG, modern browsers)
+│   ├── favicon.png         # Site favicon (PNG 96×96, legacy fallback)
+│   └── portfolio-preview.png  # Portfolio project preview screenshot
 └── README.md               # Project documentation
 ```
 
@@ -38,7 +40,7 @@ Portfolio/
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/Atharva12210985/portfolio.git
+   git clone https://github.com/atharvaawate22/portfolio.git
    cd portfolio
    ```
 
@@ -77,7 +79,7 @@ Portfolio/
 
 ### Colors
 
-Edit CSS variables in `css/styles.css`:
+Edit CSS variables in `css/base.css`:
 
 ```css
 :root {
@@ -112,7 +114,7 @@ MIT License - feel free to use this template for your own portfolio!
 
 **Atharva Awate**
 
-- GitHub: [@Atharva12210985](https://github.com/Atharva12210985)
+- GitHub: [@atharvaawate22](https://github.com/atharvaawate22)
 - LinkedIn: [Atharva D Awate](https://www.linkedin.com/in/atharva-d-awate)
 - Email: atharvaawate14@gmail.com
 
