@@ -116,6 +116,6 @@ MIT License - feel free to use this template for your own portfolio!
 
 - GitHub: [@atharvaawate22](https://github.com/atharvaawate22)
 - LinkedIn: [Atharva D Awate](https://www.linkedin.com/in/atharva-d-awate)
-- Email: atharvaawate14@gmail.com
+- Email: atharva@awate.dev
 
 ---
