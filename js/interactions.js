@@ -28,7 +28,7 @@ const PROJECTS = [
       "Redis",
       "Sentry",
     ],
-    image: null, // TODO: drop a cethub.in screenshot into /assets to display here
+    image: "/assets/cethub-preview.jpg",
     imageVariant: "cethub",
     link: "https://cethub.in",
     github: null, // source-available, repo not public
@@ -92,9 +92,12 @@ function openProjectModal(projectId) {
   const liveLink = document.getElementById("modalLiveBtn");
   const githubLink = document.getElementById("modalGithubBtn");
 
-  // Image: use real image when available, otherwise gradient fallback
+  // Image: use real image when available, otherwise gradient fallback.
+  // The .has-image flag tells CSS to suppress the variant wordmark overlay
+  // so it doesn't bleed through on top of a real screenshot.
   if (modalImageWrap) {
     modalImageWrap.dataset.variant = project.imageVariant || "default";
+    modalImageWrap.classList.toggle("has-image", !!project.image);
   }
   if (modalImage) {
     if (project.image) {

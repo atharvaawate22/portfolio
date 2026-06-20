@@ -578,6 +578,15 @@
   display: flex;
 }
 
+/* When a real screenshot is present, suppress the gradient + wordmark
+   fallback so they don't sit on top of the image. */
+#modalImage.has-image {
+  background: var(--color-bg-secondary);
+}
+#modalImage.has-image::before {
+  display: none !important;
+}
+
 #modalImage[data-variant="cethub"]::before { content: "CETHub"; }
 #modalImage[data-variant="yoga"]::before { content: "Yoga"; }
 #modalImage[data-variant="swadesh"]::before { content: "MERN"; }
