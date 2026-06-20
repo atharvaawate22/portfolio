@@ -7,14 +7,14 @@
       content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover"
     />
     <meta name="theme-color" content="#0a0a0a" />
-    <title>Atharva Awate | Portfolio</title>
+    <title>Atharva Awate | Full-Stack Developer & Creative Coder</title>
     <meta
       name="description"
-      content="Portfolio of Atharva Awate - Web Developer & Creative Coder specializing in interactive 3D experiences and modern web applications."
+      content="Atharva Awate — full-stack developer and creative coder. I build production web apps end-to-end (Next.js, TypeScript, Node.js, PostgreSQL) and write Three.js scenes on the side."
     />
     <meta
       name="keywords"
-      content="web developer, portfolio, three.js, webgl, react, javascript"
+      content="atharva awate, full-stack developer, next.js, react, typescript, node.js, postgresql, three.js, webgl, creative coding, portfolio"
     />
     <meta name="author" content="Atharva Awate" />
     <link rel="canonical" href="https://atharvaawate.me/" />
@@ -22,15 +22,15 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://atharvaawate.me/" />
-    <meta property="og:title" content="Atharva Awate | Portfolio" />
-    <meta property="og:description" content="Portfolio of Atharva Awate - Web Developer & Creative Coder specializing in interactive 3D experiences." />
+    <meta property="og:title" content="Atharva Awate | Full-Stack Developer & Creative Coder" />
+    <meta property="og:description" content="Full-stack developer shipping production web apps. Recent B.Tech grad with a parallel love for Three.js and creative coding." />
     <meta property="og:image" content="https://atharvaawate.me/assets/portfolio-preview.png" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://atharvaawate.me/" />
-    <meta property="twitter:title" content="Atharva Awate | Portfolio" />
-    <meta property="twitter:description" content="Portfolio of Atharva Awate - Web Developer & Creative Coder specializing in interactive 3D experiences." />
+    <meta property="twitter:title" content="Atharva Awate | Full-Stack Developer & Creative Coder" />
+    <meta property="twitter:description" content="Full-stack developer shipping production web apps. Recent B.Tech grad with a parallel love for Three.js and creative coding." />
     <meta property="twitter:image" content="https://atharvaawate.me/assets/portfolio-preview.png" />
 
     <!-- Favicon -->
@@ -57,6 +57,7 @@
     <link rel="stylesheet" href="css/components.css" />
     <link rel="stylesheet" href="css/sections.css" />
     <link rel="stylesheet" href="css/animations.css" />
+    <link rel="stylesheet" href="css/premium.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -65,9 +66,17 @@
     />
   </head>
   <body>
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress" aria-hidden="true">
+      <div class="scroll-progress-bar"></div>
+    </div>
+
     <!-- Custom Cursor -->
     <div class="cursor"></div>
     <div class="cursor-follower"></div>
+
+    <!-- Hero gradient blob that follows cursor -->
+    <div class="cursor-blob" aria-hidden="true"></div>
 
     <!-- Loader -->
     <div class="loader">
@@ -169,28 +178,33 @@
         <div class="floating-shape floating-shape--3"></div>
       </div>
       <div class="hero-content">
+        <div class="hero-availability" aria-live="polite">
+          <span class="availability-dot" aria-hidden="true"></span>
+          <span class="availability-text">Available for opportunities</span>
+        </div>
         <div class="hero-title-wrapper">
           <h1 class="hero-title">
             <div class="title-line">
-              <span class="title-word">Atharva</span>
+              <span class="title-word" data-text="Atharva">Atharva</span>
             </div>
             <div class="title-line">
-              <span class="title-word">Awate</span>
+              <span class="title-word" data-text="Awate">Awate</span>
             </div>
           </h1>
           <div class="hero-subtitle">
-            <span class="subtitle-line">WEB DEVELOPER</span>
-            <span class="subtitle-line">& CREATIVE CODER</span>
+            <span class="subtitle-line" data-scramble="FULL-STACK DEVELOPER">FULL-STACK DEVELOPER</span>
+            <span class="subtitle-line" data-scramble="&amp; CREATIVE CODER">&amp; CREATIVE CODER</span>
           </div>
         </div>
         <div class="hero-description">
           <p>
-            Building interactive 3D experiences and modern web applications that
-            are fast, responsive, and engaging.
+            I ship full-stack web apps end-to-end &mdash; APIs, databases, frontends.
+            And I write Three.js scenes on the side, because how a thing
+            <em>feels</em> matters as much as how it scales.
           </p>
         </div>
         <div class="hero-cta">
-          <a href="#projects" class="btn-primary">
+          <a href="#projects" class="btn-primary magnetic">
             <span>View Projects</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -207,7 +221,7 @@
               <polyline points="7 7 17 7 17 17"></polyline>
             </svg>
           </a>
-          <a href="#contact" class="btn-secondary">Let's Talk</a>
+          <a href="#contact" class="btn-secondary magnetic">Let&apos;s Talk</a>
         </div>
       </div>
       <div class="hero-3d" id="hero-canvas"></div>
@@ -215,7 +229,7 @@
         <span>Scroll</span>
         <div class="scroll-line"></div>
       </div>
-      <div class="hero-bg-text">CREATIVE</div>
+      <div class="hero-bg-text" data-cycle='["CRAFT","BUILD","SHIP"]'>CRAFT</div>
     </section>
 
     <!-- About Section -->
@@ -252,28 +266,37 @@
         </div>
         <div class="about-text">
           <p class="about-intro">
-            Hello! I'm a passionate web developer who loves creating immersive
-            digital experiences. I specialize in building interactive 3D
-            websites, real-time applications, and modern web solutions.
+            I&rsquo;m a recent B.Tech graduate and full-stack developer based in
+            Pune, India. I build web apps end-to-end &mdash; schemas, APIs, and
+            interfaces that don&rsquo;t feel like an afterthought.
           </p>
           <p class="about-description">
-            With expertise in Three.js, WebGL, and modern JavaScript frameworks,
-            I transform creative ideas into stunning digital realities. I
-            believe in the power of combining aesthetics with functionality to
-            create memorable user experiences.
+            I work across the stack with Next.js, TypeScript, Node.js, and
+            PostgreSQL, and I&rsquo;ve shipped both a production platform and an
+            ML-powered mobile app. On the side, I write Three.js scenes and
+            animation systems &mdash; this portfolio is one of them &mdash;
+            because how a thing <em>feels</em> matters.
           </p>
-          <div class="about-stats">
-            <div class="stat">
-              <span class="stat-number" data-target="3">0</span>
-              <span class="stat-label">Years Experience</span>
+          <div class="about-highlights">
+            <div class="highlight">
+              <span class="highlight-value">B.Tech</span>
+              <span class="highlight-label">Recent Graduate</span>
             </div>
-            <div class="stat">
-              <span class="stat-number" data-target="25">0</span>
-              <span class="stat-label">Projects Completed</span>
-            </div>
-            <div class="stat">
-              <span class="stat-number" data-target="15">0</span>
-              <span class="stat-label">Happy Clients</span>
+            <a
+              href="https://cethub.in"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="highlight highlight-link"
+            >
+              <span class="highlight-value">
+                Live
+                <svg class="highlight-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+              </span>
+              <span class="highlight-label">cethub.in</span>
+            </a>
+            <div class="highlight">
+              <span class="highlight-value">Open</span>
+              <span class="highlight-label">to Opportunities</span>
             </div>
           </div>
         </div>
@@ -287,114 +310,227 @@
         <h2 class="section-title">Featured Projects</h2>
       </div>
       <div class="projects-grid">
+        <!-- CETHub -->
         <article class="project-card" data-project="1">
-          <div class="project-image">
-            <img
-              src="/assets/portfolio-preview.png"
-              alt="Portfolio Website Preview"
-              style="width:100%;height:100%;object-fit:cover;object-position:top;"
-            />
+          <div class="project-image project-image--cethub">
+            <div class="project-mockup project-mockup--browser">
+              <div class="browser-frame">
+                <div class="browser-chrome">
+                  <span class="browser-dot"></span>
+                  <span class="browser-dot"></span>
+                  <span class="browser-dot"></span>
+                  <span class="browser-url">cethub.in</span>
+                </div>
+                <div class="browser-body">
+                  <div class="mockup-row mockup-row--header"></div>
+                  <div class="mockup-grid">
+                    <div class="mockup-cell mockup-cell--accent"></div>
+                    <div class="mockup-cell"></div>
+                    <div class="mockup-cell"></div>
+                    <div class="mockup-cell"></div>
+                    <div class="mockup-cell mockup-cell--accent"></div>
+                    <div class="mockup-cell"></div>
+                  </div>
+                  <div class="mockup-bar"></div>
+                </div>
+              </div>
+            </div>
+            <span class="project-status project-status--live" aria-label="Status: Live">
+              <span class="status-dot"></span> Live
+            </span>
             <div class="project-overlay">
-              <span class="view-project">View Project</span>
+              <span class="view-project">View Details</span>
             </div>
           </div>
           <div class="project-info">
-            <h3 class="project-title">Personal Portfolio</h3>
+            <div class="project-header">
+              <h3 class="project-title">CETHub</h3>
+              <span class="project-tagline">MHT-CET Admission Platform</span>
+            </div>
             <p class="project-description">
-              Custom-built with vanilla JS, Three.js 3D scenes, GSAP animations &amp; responsive dark UI
+              Full-stack platform helping Maharashtra engineering students
+              navigate MHT-CET admissions &mdash; percentile predictor,
+              cutoff explorer, and consultation booking.
+            </p>
+            <div class="project-tags">
+              <span>Next.js</span>
+              <span>TypeScript</span>
+              <span>PostgreSQL</span>
+              <span>Node.js</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Yoga Therapy App -->
+        <article class="project-card" data-project="2">
+          <div class="project-image project-image--yoga">
+            <div class="project-mockup project-mockup--pose">
+              <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <defs>
+                  <linearGradient id="poseLine" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#f093fb"/>
+                    <stop offset="100%" stop-color="#f5576c"/>
+                  </linearGradient>
+                </defs>
+                <!-- skeleton lines -->
+                <g stroke="url(#poseLine)" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.7">
+                  <line x1="100" y1="40" x2="100" y2="80"/>
+                  <line x1="100" y1="80" x2="70" y2="115"/>
+                  <line x1="100" y1="80" x2="130" y2="115"/>
+                  <line x1="70" y1="115" x2="55" y2="155"/>
+                  <line x1="130" y1="115" x2="145" y2="155"/>
+                  <line x1="100" y1="80" x2="100" y2="125"/>
+                  <line x1="100" y1="125" x2="80" y2="170"/>
+                  <line x1="100" y1="125" x2="120" y2="170"/>
+                </g>
+                <!-- landmark dots -->
+                <g fill="#f5576c">
+                  <circle cx="100" cy="35" r="6"/>
+                  <circle cx="100" cy="80" r="3.5"/>
+                  <circle cx="70" cy="115" r="3.5"/>
+                  <circle cx="130" cy="115" r="3.5"/>
+                  <circle cx="55" cy="155" r="3.5"/>
+                  <circle cx="145" cy="155" r="3.5"/>
+                  <circle cx="100" cy="125" r="3.5"/>
+                  <circle cx="80" cy="170" r="3.5"/>
+                  <circle cx="120" cy="170" r="3.5"/>
+                </g>
+                <!-- pulse ring -->
+                <circle cx="100" cy="35" r="14" fill="none" stroke="#f5576c" stroke-width="1" opacity="0.5">
+                  <animate attributeName="r" values="10;22;10" dur="2s" repeatCount="indefinite"/>
+                  <animate attributeName="opacity" values="0.6;0;0.6" dur="2s" repeatCount="indefinite"/>
+                </circle>
+              </svg>
+            </div>
+            <span class="project-status project-status--build" aria-label="Status: In development">
+              <span class="status-dot"></span> In Dev
+            </span>
+            <div class="project-overlay">
+              <span class="view-project">View Details</span>
+            </div>
+          </div>
+          <div class="project-info">
+            <div class="project-header">
+              <h3 class="project-title">Yoga Therapy App</h3>
+              <span class="project-tagline">On-device pose correction</span>
+            </div>
+            <p class="project-description">
+              Mobile app that analyzes yoga poses in real time. Extracts 33 3D
+              landmarks via MediaPipe, classifies poses with a TF-Lite model,
+              and surfaces joint-specific corrections.
+            </p>
+            <div class="project-tags">
+              <span>React Native</span>
+              <span>MediaPipe</span>
+              <span>TF Lite</span>
+              <span>scikit-learn</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Swadesh Shop -->
+        <article class="project-card" data-project="3">
+          <div class="project-image project-image--swadesh">
+            <div class="project-mockup project-mockup--shop">
+              <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <defs>
+                  <linearGradient id="shopGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#4facfe"/>
+                    <stop offset="100%" stop-color="#00f2fe"/>
+                  </linearGradient>
+                </defs>
+                <!-- product cards -->
+                <g>
+                  <rect x="20" y="20" width="48" height="40" rx="6" fill="url(#shopGrad)" opacity="0.35"/>
+                  <rect x="20" y="64" width="32" height="4" rx="2" fill="#fff" opacity="0.6"/>
+                  <rect x="20" y="72" width="20" height="3" rx="1.5" fill="#fff" opacity="0.35"/>
+
+                  <rect x="76" y="20" width="48" height="40" rx="6" fill="url(#shopGrad)" opacity="0.55"/>
+                  <rect x="76" y="64" width="32" height="4" rx="2" fill="#fff" opacity="0.6"/>
+                  <rect x="76" y="72" width="20" height="3" rx="1.5" fill="#fff" opacity="0.35"/>
+
+                  <rect x="132" y="20" width="48" height="40" rx="6" fill="url(#shopGrad)" opacity="0.35"/>
+                  <rect x="132" y="64" width="32" height="4" rx="2" fill="#fff" opacity="0.6"/>
+                  <rect x="132" y="72" width="20" height="3" rx="1.5" fill="#fff" opacity="0.35"/>
+                </g>
+                <!-- cart -->
+                <g transform="translate(140, 95)" stroke="#00f2fe" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M2 4 H8 L12 22 H32"/>
+                  <path d="M12 14 H34 L36 8 H10"/>
+                  <circle cx="16" cy="28" r="2.2" fill="#00f2fe"/>
+                  <circle cx="30" cy="28" r="2.2" fill="#00f2fe"/>
+                </g>
+                <!-- badge -->
+                <g transform="translate(145, 85)">
+                  <circle cx="0" cy="0" r="6" fill="#f5576c"/>
+                  <text x="0" y="2" text-anchor="middle" font-size="7" font-family="monospace" fill="#fff" font-weight="700">3</text>
+                </g>
+              </svg>
+            </div>
+            <span class="project-status project-status--build" aria-label="Status: Build">
+              <span class="status-dot"></span> Build
+            </span>
+            <div class="project-overlay">
+              <span class="view-project">View Details</span>
+            </div>
+          </div>
+          <div class="project-info">
+            <div class="project-header">
+              <h3 class="project-title">Swadesh Shop</h3>
+              <span class="project-tagline">MERN E-commerce Platform</span>
+            </div>
+            <p class="project-description">
+              Full-stack e-commerce with controller&rarr;service layering,
+              Mongoose schemas, JWT-secured routes, geolocation-based delivery,
+              and transactional payment workflows.
+            </p>
+            <div class="project-tags">
+              <span>MongoDB</span>
+              <span>Express</span>
+              <span>React</span>
+              <span>JWT</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Personal Portfolio -->
+        <article class="project-card" data-project="4">
+          <div class="project-image project-image--portfolio">
+            <img
+              src="/assets/portfolio-preview.png"
+              alt="Portfolio Website Preview"
+              loading="lazy"
+              style="width:100%;height:100%;object-fit:cover;object-position:top;"
+            />
+            <span class="project-status project-status--live" aria-label="Status: Live">
+              <span class="status-dot"></span> Live
+            </span>
+            <div class="project-overlay">
+              <span class="view-project">View Details</span>
+            </div>
+          </div>
+          <div class="project-info">
+            <div class="project-header">
+              <h3 class="project-title">Personal Portfolio</h3>
+              <span class="project-tagline">The site you&rsquo;re on</span>
+            </div>
+            <p class="project-description">
+              Built entirely in vanilla JS with custom Three.js scenes, GSAP
+              animations, and a magnetic cursor. No framework, no build step
+              &mdash; every pixel behaves exactly as designed.
             </p>
             <div class="project-tags">
               <span>Three.js</span>
               <span>GSAP</span>
               <span>Vanilla JS</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="project-card" data-project="2">
-          <div class="project-image">
-            <div
-              class="project-placeholder"
-              style="
-                background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-              "
-            >
-              <span>02</span>
-            </div>
-            <div class="project-overlay">
-              <span class="view-project">View Project</span>
-            </div>
-          </div>
-          <div class="project-info">
-            <h3 class="project-title">Real-time Dashboard</h3>
-            <p class="project-description">
-              Live data visualization dashboard with WebSocket integration
-            </p>
-            <div class="project-tags">
-              <span>React</span>
-              <span>Node.js</span>
-              <span>WebSocket</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="project-card" data-project="3">
-          <div class="project-image">
-            <div
-              class="project-placeholder"
-              style="
-                background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-              "
-            >
-              <span>03</span>
-            </div>
-            <div class="project-overlay">
-              <span class="view-project">View Project</span>
-            </div>
-          </div>
-          <div class="project-info">
-            <h3 class="project-title">E-Commerce Platform</h3>
-            <p class="project-description">
-              Modern e-commerce solution with seamless user experience
-            </p>
-            <div class="project-tags">
-              <span>Next.js</span>
-              <span>Stripe</span>
-              <span>MongoDB</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="project-card" data-project="4">
-          <div class="project-image">
-            <div
-              class="project-placeholder"
-              style="
-                background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
-              "
-            >
-              <span>04</span>
-            </div>
-            <div class="project-overlay">
-              <span class="view-project">View Project</span>
-            </div>
-          </div>
-          <div class="project-info">
-            <h3 class="project-title">WebGL Particles</h3>
-            <p class="project-description">
-              Interactive particle system with physics simulation
-            </p>
-            <div class="project-tags">
-              <span>WebGL</span>
-              <span>Shaders</span>
-              <span>JavaScript</span>
+              <span>CSS3</span>
             </div>
           </div>
         </article>
       </div>
       <div class="projects-cta">
-        <a href="mailto:atharva@awate.dev" class="btn-outline">
-          <span>Start a New Project</span>
+        <a href="mailto:atharva@atharvaawate.me" class="btn-outline magnetic">
+          <span>Let&rsquo;s build something together</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="20"
@@ -421,204 +557,138 @@
       </div>
       <div class="skills-content">
         <div class="skills-list">
+          <!-- Frontend -->
           <div class="skill-item">
             <div class="skill-icon">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="32"
-                height="32"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <polygon
-                  points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"
-                ></polygon>
-                <line x1="12" y1="22" x2="12" y2="15.5"></line>
-                <polyline points="22 8.5 12 15.5 2 8.5"></polyline>
-              </svg>
-            </div>
-            <div class="skill-info">
-              <h3>Three.js & WebGL</h3>
-              <p>Creating immersive 3D experiences and real-time graphics</p>
-            </div>
-          </div>
-
-          <div class="skill-item">
-            <div class="skill-icon">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="32"
-                height="32"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="16 18 22 12 16 6"></polyline>
                 <polyline points="8 6 2 12 8 18"></polyline>
               </svg>
             </div>
             <div class="skill-info">
-              <h3>React & Next.js</h3>
-              <p>Building modern, scalable frontend applications</p>
+              <h3>Frontend</h3>
+              <p>React, Next.js, TypeScript, Tailwind &mdash; building UIs that feel as good as they look.</p>
             </div>
           </div>
 
+          <!-- Backend -->
           <div class="skill-item">
             <div class="skill-icon">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="32"
-                height="32"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                <line x1="8" y1="21" x2="16" y2="21"></line>
-                <line x1="12" y1="17" x2="12" y2="21"></line>
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="3" width="20" height="6" rx="1.5"></rect>
+                <rect x="2" y="13" width="20" height="6" rx="1.5"></rect>
+                <line x1="6" y1="6" x2="6.01" y2="6"></line>
+                <line x1="6" y1="16" x2="6.01" y2="16"></line>
               </svg>
             </div>
             <div class="skill-info">
-              <h3>Node.js & Express</h3>
-              <p>Developing robust backend services and APIs</p>
+              <h3>Backend</h3>
+              <p>Node.js, Express, REST APIs, Zod validation &mdash; controller&rarr;service&rarr;repository layering.</p>
             </div>
           </div>
 
+          <!-- Databases -->
           <div class="skill-item">
             <div class="skill-icon">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="32"
-                height="32"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path d="M12 3a9 9 0 1 0 9 9"></path>
-                <path d="M12 3v9l9-9"></path>
-              </svg>
-            </div>
-            <div class="skill-info">
-              <h3>GSAP Animation</h3>
-              <p>Crafting smooth, performant web animations</p>
-            </div>
-          </div>
-
-          <div class="skill-item">
-            <div class="skill-icon">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="32"
-                height="32"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                 <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
                 <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
                 <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
               </svg>
             </div>
             <div class="skill-info">
-              <h3>MongoDB & PostgreSQL</h3>
-              <p>Managing databases and data architecture</p>
+              <h3>Databases</h3>
+              <p>PostgreSQL, MongoDB, Redis &mdash; schema design, indexing, and caching.</p>
             </div>
           </div>
 
+          <!-- Mobile & ML -->
           <div class="skill-item">
             <div class="skill-icon">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="32"
-                height="32"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path
-                  d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"
-                ></path>
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="6" y="2" width="12" height="20" rx="2.5"></rect>
+                <line x1="11" y1="18" x2="13" y2="18"></line>
+                <circle cx="12" cy="11" r="2.5"></circle>
+                <path d="M9 8.5 L8 7.5 M15 8.5 L16 7.5 M9 13.5 L8 14.5 M15 13.5 L16 14.5"></path>
               </svg>
             </div>
             <div class="skill-info">
-              <h3>Cloud & DevOps</h3>
-              <p>Deploying and scaling applications efficiently</p>
+              <h3>Mobile &amp; ML</h3>
+              <p>React Native, MediaPipe, TensorFlow Lite, scikit-learn &mdash; on-device inference.</p>
+            </div>
+          </div>
+
+          <!-- Creative Coding -->
+          <div class="skill-item">
+            <div class="skill-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon>
+                <line x1="12" y1="22" x2="12" y2="15.5"></line>
+                <polyline points="22 8.5 12 15.5 2 8.5"></polyline>
+              </svg>
+            </div>
+            <div class="skill-info">
+              <h3>Creative Coding</h3>
+              <p>Three.js, WebGL, GSAP, Canvas &mdash; 3D scenes, shaders, and motion systems.</p>
+            </div>
+          </div>
+
+          <!-- DevOps & Tooling -->
+          <div class="skill-item">
+            <div class="skill-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path>
+              </svg>
+            </div>
+            <div class="skill-info">
+              <h3>DevOps &amp; Tooling</h3>
+              <p>Vercel, Render, Supabase, Sentry, Playwright, Git &mdash; deploy, monitor, iterate.</p>
             </div>
           </div>
         </div>
         <div class="skills-marquee">
-          <div class="marquee-track">
-            <span>JavaScript</span>
-            <span>•</span>
-            <span>TypeScript</span>
-            <span>•</span>
-            <span>React</span>
-            <span>•</span>
-            <span>Next.js</span>
-            <span>•</span>
-            <span>Three.js</span>
-            <span>•</span>
-            <span>WebGL</span>
-            <span>•</span>
-            <span>GSAP</span>
-            <span>•</span>
-            <span>Node.js</span>
-            <span>•</span>
-            <span>Express</span>
-            <span>•</span>
-            <span>MongoDB</span>
-            <span>•</span>
-            <span>PostgreSQL</span>
-            <span>•</span>
-            <span>Docker</span>
-            <span>•</span>
-            <span>AWS</span>
-            <span>•</span>
-            <span>JavaScript</span>
-            <span>•</span>
-            <span>TypeScript</span>
-            <span>•</span>
-            <span>React</span>
-            <span>•</span>
-            <span>Next.js</span>
-            <span>•</span>
-            <span>Three.js</span>
-            <span>•</span>
-            <span>WebGL</span>
-            <span>•</span>
-            <span>GSAP</span>
-            <span>•</span>
-            <span>Node.js</span>
-            <span>•</span>
-            <span>Express</span>
-            <span>•</span>
-            <span>MongoDB</span>
-            <span>•</span>
-            <span>PostgreSQL</span>
-            <span>•</span>
-            <span>Docker</span>
-            <span>•</span>
-            <span>AWS</span>
-            <span>•</span>
+          <div class="marquee-track" aria-hidden="true">
+            <span>TypeScript</span><span>&bull;</span>
+            <span>Next.js</span><span>&bull;</span>
+            <span>React</span><span>&bull;</span>
+            <span>Tailwind</span><span>&bull;</span>
+            <span>Node.js</span><span>&bull;</span>
+            <span>Express</span><span>&bull;</span>
+            <span>Zod</span><span>&bull;</span>
+            <span>PostgreSQL</span><span>&bull;</span>
+            <span>MongoDB</span><span>&bull;</span>
+            <span>Redis</span><span>&bull;</span>
+            <span>React Native</span><span>&bull;</span>
+            <span>Python</span><span>&bull;</span>
+            <span>MediaPipe</span><span>&bull;</span>
+            <span>TensorFlow Lite</span><span>&bull;</span>
+            <span>Three.js</span><span>&bull;</span>
+            <span>GSAP</span><span>&bull;</span>
+            <span>WebGL</span><span>&bull;</span>
+            <span>Vercel</span><span>&bull;</span>
+            <span>Sentry</span><span>&bull;</span>
+            <span>Playwright</span><span>&bull;</span>
+            <!-- duplicated for seamless loop -->
+            <span>TypeScript</span><span>&bull;</span>
+            <span>Next.js</span><span>&bull;</span>
+            <span>React</span><span>&bull;</span>
+            <span>Tailwind</span><span>&bull;</span>
+            <span>Node.js</span><span>&bull;</span>
+            <span>Express</span><span>&bull;</span>
+            <span>Zod</span><span>&bull;</span>
+            <span>PostgreSQL</span><span>&bull;</span>
+            <span>MongoDB</span><span>&bull;</span>
+            <span>Redis</span><span>&bull;</span>
+            <span>React Native</span><span>&bull;</span>
+            <span>Python</span><span>&bull;</span>
+            <span>MediaPipe</span><span>&bull;</span>
+            <span>TensorFlow Lite</span><span>&bull;</span>
+            <span>Three.js</span><span>&bull;</span>
+            <span>GSAP</span><span>&bull;</span>
+            <span>WebGL</span><span>&bull;</span>
+            <span>Vercel</span><span>&bull;</span>
+            <span>Sentry</span><span>&bull;</span>
+            <span>Playwright</span><span>&bull;</span>
           </div>
         </div>
       </div>
@@ -645,12 +715,12 @@
           </h2>
         </div>
         <p class="contact-description">
-          Have a project in mind or just want to chat? Feel free to reach out.
-          I'm always open to discussing new projects, creative ideas, or
-          opportunities.
+          Open to full-stack roles, freelance builds, and interesting
+          collaborations. If you&rsquo;re hiring, building something, or just
+          want to talk about how a feature should feel &mdash; my inbox is open.
         </p>
         <div class="contact-links">
-          <a href="mailto:atharva@awate.dev" class="contact-link">
+          <a href="mailto:atharva@atharvaawate.me" class="contact-link">
             <span class="link-icon">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -865,6 +935,7 @@
       defer
     ></script>
     <script src="js/cursor.js" defer></script>
+    <script src="js/effects.js" defer></script>
     <script src="js/animations.js" defer></script>
     <script type="module" src="js/three-scenes.js"></script>
     <script src="js/interactions.js" defer></script>
@@ -877,11 +948,27 @@
       "name": "Atharva Awate",
       "url": "https://atharvaawate.me/",
       "image": "https://atharvaawate.me/assets/favicon.svg",
+      "email": "mailto:atharva@atharvaawate.me",
+      "jobTitle": "Full-Stack Developer",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Pune",
+        "addressCountry": "IN"
+      },
       "sameAs": [
         "https://github.com/atharvaawate22",
         "https://www.linkedin.com/in/atharva-d-awate"
       ],
-      "jobTitle": "Web Developer"
+      "knowsAbout": [
+        "Full-Stack Development",
+        "Next.js",
+        "TypeScript",
+        "Node.js",
+        "PostgreSQL",
+        "React Native",
+        "Three.js",
+        "Creative Coding"
+      ]
     }
     </script>
   </body>
