@@ -143,28 +143,18 @@ gsap.to(".contact-content > *", {
   ease: "power3.out",
 });
 
-// Stats counter animation
-const stats = document.querySelectorAll(".stat-number");
-
-stats.forEach((stat) => {
-  const target = parseInt(stat.getAttribute("data-target"));
-
-  ScrollTrigger.create({
-    trigger: stat,
+// About highlight reveal — staggered fade-in as the strip enters
+gsap.from(".about-highlights .highlight", {
+  scrollTrigger: {
+    trigger: ".about-highlights",
     start: "top 85%",
-    onEnter: () => {
-      const counter = { val: 0 };
-      gsap.to(counter, {
-        val: target,
-        duration: 2,
-        ease: "power2.out",
-        onUpdate: () => {
-          stat.textContent = Math.floor(counter.val);
-        },
-      });
-    },
-    once: true,
-  });
+    toggleActions: "play none none reverse",
+  },
+  opacity: 0,
+  y: 24,
+  duration: 0.6,
+  stagger: 0.08,
+  ease: "power3.out",
 });
 
 // Parallax effect for background text
@@ -179,6 +169,21 @@ gsap.to(".hero-bg-text", {
   opacity: 0,
   ease: "none",
 });
+
+// Scroll progress bar — width tracks page scroll
+const scrollProgressBar = document.querySelector(".scroll-progress-bar");
+if (scrollProgressBar) {
+  gsap.to(scrollProgressBar, {
+    scaleX: 1,
+    ease: "none",
+    scrollTrigger: {
+      trigger: document.documentElement,
+      start: "top top",
+      end: "bottom bottom",
+      scrub: 0.3,
+    },
+  });
+}
 
 
 // Smooth scroll for anchor links

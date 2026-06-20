@@ -7,80 +7,112 @@ const projectModal = document.getElementById("project-modal");
 const modalOverlay = projectModal?.querySelector(".modal-overlay");
 const modalClose = projectModal?.querySelector(".modal-close");
 
+// Project data — matches the four cards in index.html in order.
+// IMPORTANT: keep this array length and order in sync with the .project-card
+// elements; the card index drives which entry opens.
+const PROJECTS = [
+  {
+    id: 1,
+    title: "CETHub",
+    tagline: "MHT-CET Admission Platform",
+    description:
+      "Full-stack platform helping Maharashtra engineering students navigate MHT-CET CAP admissions. Features a percentile-based college predictor, historical cutoff explorer (2022–2025), consultation booking with Google Meet, CET update tracking, and a role-protected admin dashboard. Deployed across Vercel (frontend), Render (backend) and Supabase (Postgres) with Redis caching, Sentry monitoring, and Playwright e2e.",
+    tech: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind",
+      "Node.js",
+      "Express",
+      "Zod",
+      "PostgreSQL",
+      "Redis",
+      "Sentry",
+    ],
+    image: null, // TODO: drop a cethub.in screenshot into /assets to display here
+    imageVariant: "cethub",
+    link: "https://cethub.in",
+    github: null, // source-available, repo not public
+  },
+  {
+    id: 2,
+    title: "Yoga Therapy App",
+    tagline: "On-device pose correction",
+    description:
+      "Mobile app that analyzes yoga poses in real time. Extracts 33 3D body landmarks via MediaPipe Pose, engineers hip-normalized joint-angle features, and runs them through a scikit-learn classifier (Random Forest / SVM / MLP) converted to TensorFlow Lite for on-device inference. A real-time feedback engine computes angular deviation from reference templates, surfaces joint-specific corrections, and tracks per-session accuracy and streaks on a progress dashboard.",
+    tech: [
+      "React Native",
+      "Python",
+      "MediaPipe Pose",
+      "TensorFlow Lite",
+      "scikit-learn",
+    ],
+    image: null,
+    imageVariant: "yoga",
+    link: null,
+    github: null,
+  },
+  {
+    id: 3,
+    title: "Swadesh Shop",
+    tagline: "MERN E-commerce Platform",
+    description:
+      "Full-stack e-commerce app built on the MERN stack. Express.js REST APIs for product, cart, and order modules with controller→service layering and structured error handling. Mongoose schemas for products, orders, and users; JWT middleware and server-side validation on protected routes. Integrated a geolocation API for location-based delivery, and implemented payment workflows with transaction validation.",
+    tech: ["MongoDB", "Express", "React", "Node.js", "JWT", "REST APIs"],
+    image: null,
+    imageVariant: "swadesh",
+    link: null,
+    github: null,
+  },
+  {
+    id: 4,
+    title: "Personal Portfolio",
+    tagline: "The site you’re on",
+    description:
+      "A fully custom portfolio built with vanilla HTML, CSS and JavaScript — real-time 3D scenes (Three.js), scroll-driven animations (GSAP), a magnetic cursor, and a dark-theme responsive UI. No framework, no build step. Deployed at atharvaawate.me.",
+    tech: ["Vanilla JS", "Three.js", "GSAP", "CSS3", "HTML5"],
+    image: "/assets/portfolio-preview.png",
+    imageVariant: "portfolio",
+    link: "https://atharvaawate.me",
+    github: "https://github.com/atharvaawate22/portfolio",
+  },
+];
+
 function openProjectModal(projectId) {
   if (!projectModal) return;
 
-  // Project data
-  const projects = {
-    1: {
-      title: "Personal Portfolio",
-      description:
-        "A fully custom portfolio built with vanilla HTML, CSS, and JavaScript — featuring real-time 3D scenes (Three.js), scroll-triggered animations (GSAP), a custom magnetic cursor, and a responsive dark-theme UI. Deployed at atharvaawate.me.",
-      tech: ["HTML5", "CSS3", "JavaScript", "Three.js", "GSAP"],
-      image: "/assets/portfolio-preview.png",
-      link: "https://atharvaawate.me",
-      github: "https://github.com/atharvaawate22/portfolio",
-    },
-    2: {
-      title: "E-Commerce Platform",
-      description:
-        "Full-stack e-commerce solution with real-time inventory management and secure payments.",
-      tech: ["React", "Node.js", "MongoDB", "Stripe", "Redux"],
-      image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800",
-      link: "#",
-      github: "#",
-    },
-    3: {
-      title: "AI Dashboard",
-      description:
-        "Analytics dashboard with machine learning insights and real-time data visualization.",
-      tech: ["Python", "TensorFlow", "React", "D3.js", "FastAPI"],
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800",
-      link: "#",
-      github: "#",
-    },
-    4: {
-      title: "Social Media App",
-      description:
-        "Mobile-first social platform with real-time messaging and content sharing features.",
-      tech: ["React Native", "Firebase", "Node.js", "Socket.io"],
-      image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800",
-      link: "#",
-      github: "#",
-    },
-    5: {
-      title: "Crypto Tracker",
-      description:
-        "Real-time cryptocurrency tracking with portfolio management and price alerts.",
-      tech: ["Vue.js", "Chart.js", "CoinGecko API", "PWA"],
-      image: "https://images.unsplash.com/photo-1621761191319-c6fb62004040?w=800",
-      link: "#",
-      github: "#",
-    },
-    6: {
-      title: "Task Management",
-      description:
-        "Collaborative project management tool with kanban boards and team features.",
-      tech: ["Angular", "NestJS", "PostgreSQL", "WebSocket"],
-      image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800",
-      link: "#",
-      github: "#",
-    },
-  };
-
-  const project = projects[projectId];
+  const project = PROJECTS.find((p) => p.id === Number(projectId));
   if (!project) return;
 
   // Populate modal — use document-level lookups for reliable ID resolution
   const modalImage = document.querySelector("#modalImage img");
+  const modalImageWrap = document.getElementById("modalImage");
   const modalTitle = document.getElementById("modalTitle");
   const modalDescription = document.getElementById("modalDescription");
   const techTags = document.getElementById("modalTags");
   const liveLink = document.getElementById("modalLiveBtn");
   const githubLink = document.getElementById("modalGithubBtn");
 
-  if (modalImage) { modalImage.src = project.image; modalImage.alt = project.title + " preview"; }
-  if (modalTitle) modalTitle.textContent = project.title;
+  // Image: use real image when available, otherwise gradient fallback
+  if (modalImageWrap) {
+    modalImageWrap.dataset.variant = project.imageVariant || "default";
+  }
+  if (modalImage) {
+    if (project.image) {
+      modalImage.src = project.image;
+      modalImage.alt = project.title + " preview";
+      modalImage.style.display = "";
+    } else {
+      modalImage.removeAttribute("src");
+      modalImage.style.display = "none";
+    }
+  }
+
+  if (modalTitle) {
+    modalTitle.textContent = project.title;
+    if (project.tagline) {
+      modalTitle.setAttribute("data-tagline", project.tagline);
+    }
+  }
   if (modalDescription) modalDescription.textContent = project.description;
 
   if (techTags) {
@@ -89,29 +121,24 @@ function openProjectModal(projectId) {
       .join("");
   }
 
-  if (liveLink) {
-    liveLink.onclick = (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      if (project.link && project.link !== "#") {
-        window.open(project.link, "_blank", "noopener,noreferrer");
-      }
-    };
-    liveLink.style.opacity = project.link !== "#" ? "1" : "0.4";
-    liveLink.style.cursor = project.link !== "#" ? "pointer" : "not-allowed";
-  }
-
-  if (githubLink) {
-    githubLink.onclick = (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      if (project.github && project.github !== "#") {
-        window.open(project.github, "_blank", "noopener,noreferrer");
-      }
-    };
-    githubLink.style.opacity = project.github !== "#" ? "1" : "0.4";
-    githubLink.style.cursor = project.github !== "#" ? "pointer" : "not-allowed";
-  }
+  // Action buttons: hide entirely when no link rather than showing a dead button
+  const setActionButton = (btn, url, fallbackLabel) => {
+    if (!btn) return;
+    if (url) {
+      btn.style.display = "";
+      btn.onclick = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        window.open(url, "_blank", "noopener,noreferrer");
+      };
+    } else {
+      btn.style.display = "none";
+      btn.onclick = null;
+    }
+    if (fallbackLabel) btn.setAttribute("aria-label", fallbackLabel);
+  };
+  setActionButton(liveLink, project.link, "View live site");
+  setActionButton(githubLink, project.github, "View source on GitHub");
 
   // Show modal
   projectModal.classList.add("active");
