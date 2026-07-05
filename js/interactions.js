@@ -83,6 +83,18 @@ const PROJECTS = [
   },
   {
     id: 5,
+    title: "STA Debugger",
+    tagline: "LLM-assisted timing analysis",
+    description:
+      "Full-stack tool that parses OpenSTA static timing analysis reports and diagnoses every violation with a rule-based engine — bottleneck cells, excessive logic depth, clock skew, and severity per path, plus WNS/TNS metrics, worst-path slack charts, and stage-by-stage delay breakdowns. An optional LLM layer (Groq) turns each diagnosis into a plain-English explanation; the tool is fully functional without it. FastAPI + SQLAlchemy backend with JWT auth and per-user analysis history, React + Vite frontend.",
+    tech: ["Python", "FastAPI", "SQLAlchemy", "React", "Groq API"],
+    image: null,
+    imageVariant: "sta",
+    link: null,
+    github: "https://github.com/atharvaawate22/STA-debugger",
+  },
+  {
+    id: 6,
     title: "Personal Portfolio",
     tagline: "The site you’re on",
     description:
@@ -181,25 +193,24 @@ document.addEventListener("keydown", (e) => {
   }
 });
 
-// Initialize project card click handlers
+// Initialize project card handlers — clickable and keyboard-operable
 document.querySelectorAll(".project-card").forEach((card, index) => {
+  card.setAttribute("tabindex", "0");
+  card.setAttribute("role", "button");
+  const title = card.querySelector(".project-title");
+  if (title) {
+    card.setAttribute("aria-label", `View details: ${title.textContent}`);
+  }
   card.addEventListener("click", () => openProjectModal(index + 1));
-});
-
-// Magnetic Effect for CTA buttons
-document.querySelectorAll(".magnetic").forEach((btn) => {
-  btn.addEventListener("mousemove", (e) => {
-    const rect = btn.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width / 2;
-    const y = e.clientY - rect.top - rect.height / 2;
-
-    btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
-  });
-
-  btn.addEventListener("mouseleave", () => {
-    btn.style.transform = "translate(0, 0)";
+  card.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      openProjectModal(index + 1);
+    }
   });
 });
+
+// (Magnetic CTA effect lives in effects.js, gated on fine pointers.)
 
 // Project Card Tilt Effect
 document.querySelectorAll(".project-card").forEach((card) => {
@@ -243,13 +254,8 @@ if (hero) {
     const moveY = (e.clientY - window.innerHeight / 2) * 0.01;
 
     const heroContent = document.querySelector(".hero-content");
-    const heroVisual = document.querySelector(".hero-visual");
-
     if (heroContent) {
       heroContent.style.transform = `translate(${moveX}px, ${moveY}px)`;
-    }
-    if (heroVisual) {
-      heroVisual.style.transform = `translate(${-moveX * 2}px, ${-moveY * 2}px)`;
     }
   });
 }

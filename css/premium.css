@@ -29,14 +29,22 @@
 }
 
 /* ---------- Hero layout overrides ----------
-   The original hero had padding-top: 120px stacked on body's 80px
-   navbar offset, which pushed CTAs below the fold once the
-   status line was added. Also, .hero-3d used height:100%
-   against a min-height parent, resolving to 0 and rendering a 0-tall
-   canvas. Both fixed here. */
+   Body has an 80px navbar offset, so a 100vh hero pushes the CTAs
+   below the fold; subtract the offset so the whole hero fits the
+   first screen. Do NOT touch .hero-3d's height — it resolves against
+   this min-height and collapses to 0 otherwise. */
 .hero {
-  padding-top: 64px !important;
-  padding-bottom: 64px !important;
+  min-height: calc(100vh - 80px) !important;
+  min-height: calc(100dvh - 80px) !important;
+  padding-top: 32px !important;
+  padding-bottom: 48px !important;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: calc(100vh - 70px) !important;
+    min-height: calc(100dvh - 70px) !important;
+  }
 }
 
 /* ---------- Hero status line ----------
@@ -367,6 +375,12 @@
     linear-gradient(135deg, #0d1f16 0%, #10281c 50%, #143324 100%);
 }
 
+.project-image--sta {
+  background:
+    radial-gradient(ellipse at 30% 25%, rgba(198, 120, 221, 0.16), transparent 60%),
+    linear-gradient(135deg, #1c1426 0%, #221a30 50%, #2a1f3d 100%);
+}
+
 .project-image--portfolio {
   background: var(--color-bg);
 }
@@ -524,6 +538,14 @@
   filter: drop-shadow(0 0 15px rgba(52, 211, 153, 0.18));
 }
 
+/* Timing-waveform SVG (sta debugger) */
+.project-mockup--sta svg {
+  width: 92%;
+  max-width: 280px;
+  height: auto;
+  filter: drop-shadow(0 0 15px rgba(198, 120, 221, 0.18));
+}
+
 @media (max-width: 768px) {
   .project-mockup {
     padding: 20px;
@@ -576,6 +598,11 @@
     radial-gradient(ellipse at 70% 25%, rgba(52, 211, 153, 0.2), transparent 60%),
     linear-gradient(135deg, #0d1f16 0%, #10281c 50%, #143324 100%);
 }
+#modalImage[data-variant="sta"] {
+  background:
+    radial-gradient(ellipse at 30% 25%, rgba(198, 120, 221, 0.2), transparent 60%),
+    linear-gradient(135deg, #1c1426 0%, #221a30 50%, #2a1f3d 100%);
+}
 
 #modalImage::before {
   content: attr(data-variant);
@@ -596,7 +623,8 @@
 #modalImage[data-variant="cethub"]::before,
 #modalImage[data-variant="yoga"]::before,
 #modalImage[data-variant="swadesh"]::before,
-#modalImage[data-variant="lkg"]::before {
+#modalImage[data-variant="lkg"]::before,
+#modalImage[data-variant="sta"]::before {
   display: flex;
 }
 
@@ -613,6 +641,7 @@
 #modalImage[data-variant="yoga"]::before { content: "Yoga"; }
 #modalImage[data-variant="swadesh"]::before { content: "MERN"; }
 #modalImage[data-variant="lkg"]::before { content: "LKG"; }
+#modalImage[data-variant="sta"]::before { content: "STA"; }
 
 /* ---------- Subtle reveal for premium feel ---------- */
 @media (prefers-reduced-motion: reduce) {

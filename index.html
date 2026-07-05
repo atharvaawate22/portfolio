@@ -518,8 +518,73 @@
           </div>
         </article>
 
-        <!-- Personal Portfolio -->
+        <!-- STA Debugger -->
         <article class="project-card" data-project="5">
+          <div class="project-image project-image--sta">
+            <div class="project-mockup project-mockup--sta">
+              <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <defs>
+                  <linearGradient id="staGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#c678dd"/>
+                    <stop offset="100%" stop-color="#8e5ad8"/>
+                  </linearGradient>
+                </defs>
+                <!-- panel frame -->
+                <rect x="14" y="12" width="172" height="116" rx="7" fill="rgba(24,20,30,0.95)" stroke="rgba(255,255,255,0.08)"/>
+                <!-- clock waveform -->
+                <path d="M26 42 h14 v-14 h16 v14 h16 v-14 h16 v14 h16 v-14 h16 v14 h14"
+                      stroke="url(#staGrad)" stroke-width="1.8" fill="none" stroke-linejoin="round"/>
+                <!-- data path arrival, late edge in red -->
+                <path d="M26 68 h34 v-12 h44 v12 h30" stroke="rgba(255,255,255,0.35)" stroke-width="1.6" fill="none" stroke-linejoin="round"/>
+                <path d="M134 68 v-12 h22 v12 h18" stroke="#f5576c" stroke-width="1.8" fill="none" stroke-linejoin="round"/>
+                <!-- violation marker -->
+                <circle cx="134" cy="62" r="3" fill="#f5576c"/>
+                <circle cx="134" cy="62" r="8" fill="none" stroke="#f5576c" stroke-width="1" opacity="0.5">
+                  <animate attributeName="r" values="5;13;5" dur="2.2s" repeatCount="indefinite"/>
+                  <animate attributeName="opacity" values="0.6;0;0.6" dur="2.2s" repeatCount="indefinite"/>
+                </circle>
+                <!-- slack bars (worst paths) -->
+                <g>
+                  <rect x="26" y="86" width="86" height="6" rx="3" fill="#f5576c" opacity="0.75"/>
+                  <rect x="26" y="97" width="64" height="6" rx="3" fill="url(#staGrad)" opacity="0.7"/>
+                  <rect x="26" y="108" width="46" height="6" rx="3" fill="url(#staGrad)" opacity="0.45"/>
+                </g>
+                <!-- metric chip -->
+                <g font-family="monospace">
+                  <rect x="128" y="88" width="52" height="24" rx="5" fill="rgba(198,120,221,0.12)" stroke="rgba(198,120,221,0.4)"/>
+                  <text x="154" y="99" text-anchor="middle" font-size="7" fill="#c678dd">WNS</text>
+                  <text x="154" y="108" text-anchor="middle" font-size="7.5" fill="#f5576c">-0.42ns</text>
+                </g>
+              </svg>
+            </div>
+            <span class="project-status project-status--build" aria-label="Status: Open source">
+              <span class="status-dot"></span> Open Source
+            </span>
+            <div class="project-overlay">
+              <span class="view-project">View Details</span>
+            </div>
+          </div>
+          <div class="project-info">
+            <div class="project-header">
+              <h3 class="project-title">STA Debugger</h3>
+              <span class="project-tagline">LLM-assisted timing analysis</span>
+            </div>
+            <p class="project-description">
+              Parses OpenSTA timing reports and diagnoses every violation
+              &mdash; bottleneck cells, logic depth, clock skew &mdash; with
+              optional LLM explanations for each suggested fix.
+            </p>
+            <div class="project-tags">
+              <span>Python</span>
+              <span>FastAPI</span>
+              <span>React</span>
+              <span>Groq</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Personal Portfolio -->
+        <article class="project-card" data-project="6">
           <div class="project-image project-image--portfolio">
             <img
               src="/assets/portfolio-preview.png"
@@ -828,10 +893,10 @@
     <footer class="footer">
       <div class="footer-content">
         <div class="footer-left">
-          <span>© <script>document.write(new Date().getFullYear())</script> Atharva Awate</span>
+          <span>© <span id="footer-year">2026</span> Atharva Awate</span>
         </div>
         <div class="footer-center">
-          <span>Built with passion & creativity</span>
+          <span>Designed &amp; built from scratch &mdash; no framework, no build step</span>
         </div>
         <div class="footer-right">
           <a href="#home" class="back-to-top">
