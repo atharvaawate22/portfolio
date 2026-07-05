@@ -1,126 +1,50 @@
-# Atharva Awate | Portfolio
+# atharvaawate.me
 
-Personal portfolio for a full-stack developer & creative coder. Vanilla HTML/CSS/JS with custom Three.js scenes, GSAP-driven scroll choreography, a magnetic cursor, and cursor-following gradient blob. No framework, no build step.
+Personal portfolio. Vanilla HTML/CSS/JS with custom Three.js scenes and
+GSAP scroll animations — no framework, no build step.
 
 **Live:** [atharvaawate.me](https://atharvaawate.me)
 
-## ✨ Features
+## Features
 
-- **Real-time 3D scenes** — wireframe icosahedron in the hero, animated paper-airplane scene in the contact section (Three.js)
-- **Scroll progress bar** with gradient fill driven by GSAP ScrollTrigger
-- **Cursor-following gradient blob** layered behind hero content (desktop only)
-- **Hero text scramble** — subtitle decodes from random chars; backdrop word cycles through `CRAFT / BUILD / SHIP`
-- **Magnetic cursor + magnetic CTAs** with smooth easing
-- **Project cards** with stylized per-project mockups (browser frame for CETHub, pose-landmark SVG for the yoga app, product-grid SVG for the e-commerce build)
-- **Status badges** — Live / In Dev / Build pills on each card
-- **Accessibility** — respects `prefers-reduced-motion`; cursor falls back on coarse-pointer devices
+- Real-time 3D: wireframe icosahedron in the hero, paper-airplane scene in
+  the contact section (Three.js, colors driven by CSS variables)
+- Animated terminal in the About section — types `whoami`, `cat about.md`,
+  a live `date` in IST, `ls projects/`, and `status`; pauses on hover
+- Hero text scramble; backdrop word cycles through `CRAFT / BUILD / SHIP`
+- Project cards with per-project SVG mockups and real screenshots, each
+  opening a detail modal (keyboard-operable)
+- Magnetic cursor and CTAs on fine-pointer devices
+- Respects `prefers-reduced-motion` (static terminal snapshot, no scramble)
 
-## 🗂️ Project Structure
+## Structure
 
 ```
-Portfolio/
-├── index.html              # Main HTML entry point
-├── css/
-│   ├── base.css            # Variables, reset, utilities
-│   ├── components.css      # UI components (cursor, nav, buttons, modal)
-│   ├── sections.css        # Page sections (hero, about, projects, etc.)
-│   ├── animations.css      # Keyframes & animation classes
-│   └── premium.css         # Scroll progress, cursor blob, status badges, mockups
-├── js/
-│   ├── cursor.js           # Custom magnetic cursor
-│   ├── effects.js          # Cursor blob, scramble, word cycle, magnetic CTAs
-│   ├── animations.js       # GSAP scroll animations
-│   ├── three-scenes.js     # Three.js 3D visualizations
-│   ├── interactions.js     # Project modal + tilt + hover effects
-│   └── main.js             # Core initialization & nav scroll behavior
-├── assets/
-│   ├── favicon.svg         # Site favicon (SVG, modern browsers)
-│   ├── favicon.png         # Site favicon (PNG 96×96, legacy fallback)
-│   └── portfolio-preview.png  # Self screenshot used by the portfolio card
-└── README.md               # Project documentation
+index.html          single page
+css/                base (variables/reset), components, sections,
+                    animations, premium (terminal, badges, mockups)
+js/                 cursor, effects (terminal/scramble), animations (GSAP),
+                    three-scenes, interactions (modal), main (nav)
+assets/             favicons, project screenshots
+scripts/            one-off screenshot helper
 ```
 
-## 🚀 Quick Start
+## Run locally
 
-1. **Clone the repository**
-
-   ```bash
-   git clone https://github.com/atharvaawate22/portfolio.git
-   cd portfolio
-   ```
-
-2. **Open locally**
-   - Simply open `index.html` in your browser, or
-   - Use a local server:
-
-     ```bash
-     # Python
-     python -m http.server 8000
-
-     # Node.js
-     npx serve
-     ```
-
-3. **Visit** `http://localhost:8000`
-
-## 🛠️ Technologies Used
-
-| Category        | Technologies                        |
-| --------------- | ----------------------------------- |
-| **Core**        | HTML5, CSS3, JavaScript (ES6+)      |
-| **3D Graphics** | Three.js, WebGL                     |
-| **Animations**  | GSAP, ScrollTrigger, CSS Animations |
-| **Fonts**       | Google Fonts (Space Grotesk, Inter) |
-
-## 📱 Sections
-
-- **Hero** — name, dual subtitle, availability badge, 3D icosahedron, cursor-following gradient blob
-- **About** — bio + honest credibility row (education, live project link, availability)
-- **Projects** — CETHub, Yoga Therapy App (on-device ML), Swadesh Shop (MERN), Personal Portfolio. Each card opens a detailed modal.
-- **Skills** — six category cards (Frontend, Backend, Databases, Mobile & ML, Creative Coding, DevOps) + scrolling tech marquee
-- **Contact** — email / GitHub / LinkedIn + animated paper-airplane scene
-
-## 🎨 Customization
-
-### Colors
-
-Edit CSS variables in `css/base.css`:
-
-```css
-:root {
-  --color-bg: #0a0a0a;
-  --color-accent: #6c63ff;
-  --color-gradient-1: #667eea;
-  --color-gradient-2: #764ba2;
-}
+```bash
+npx http-server -p 8080
 ```
 
-### Content
+Static site — any file server works.
 
-Update personal information directly in `index.html`:
+## Theme
 
-- Name and title in hero section
-- About text and stats
-- Project cards and descriptions
-- Contact links and social URLs
+The palette lives in `css/base.css` as custom properties (`--color-accent`,
+`--color-gradient-1/2`, `--color-cool`, …). The Three.js scenes read the
+same variables, so changing the palette is a one-file edit.
 
-## ⚡ Performance
+## Author
 
-- **Lighthouse Score**: 95+ Performance
-- **No layout shifts** - All animations use `transform` and `opacity`
-- **Lazy animations** - IntersectionObserver for scroll-triggered effects
-- **Optimized 3D** - Limited particle count, efficient geometries
-
-## 📄 License
-
-MIT License - feel free to use this template for your own portfolio!
-
-## 👤 Author
-
-**Atharva Awate**
-
-- GitHub: [@atharvaawate22](https://github.com/atharvaawate22)
-- LinkedIn: [Atharva D Awate](https://www.linkedin.com/in/atharva-d-awate)
-- Email: atharva@atharvaawate.me
-
----
+**Atharva Awate** — [GitHub](https://github.com/atharvaawate22) ·
+[LinkedIn](https://www.linkedin.com/in/atharva-d-awate) ·
+[atharva@atharvaawate.me](mailto:atharva@atharvaawate.me)

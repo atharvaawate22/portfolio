@@ -126,7 +126,7 @@
         {
           cmd: "ls projects/",
           out: [
-            '<span class="out-dir">cethub/</span>   <span class="out-dir">last-known-good/</span>   <span class="out-dir">yoga-therapy/</span>   <span class="out-dir">swadesh-shop/</span>   <span class="out-dir">portfolio/</span>',
+            '<span class="out-dir">cethub/</span>   <span class="out-dir">last-known-good/</span>   <span class="out-dir">sta-debugger/</span>   <span class="out-dir">yoga-therapy/</span>   <span class="out-dir">swadesh-shop/</span>   <span class="out-dir">portfolio/</span>',
           ],
         },
         {

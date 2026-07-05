@@ -9,6 +9,10 @@ document.addEventListener("DOMContentLoaded", () => {
     window.animateHero();
   }
 
+  // Footer year
+  const yearEl = document.getElementById("footer-year");
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
   // Mobile Menu
   const hamburger = document.querySelector(".nav-menu-btn");
   const mobileMenu = document.querySelector(".mobile-menu");
