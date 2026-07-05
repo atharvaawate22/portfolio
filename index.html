@@ -6,7 +6,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover"
     />
-    <meta name="theme-color" content="#0a0a0a" />
+    <meta name="theme-color" content="#0b0a08" />
     <title>Atharva Awate | Full-Stack Developer & Creative Coder</title>
     <meta
       name="description"
@@ -75,35 +75,6 @@
     <div class="cursor"></div>
     <div class="cursor-follower"></div>
 
-    <!-- Hero gradient blob that follows cursor -->
-    <div class="cursor-blob" aria-hidden="true"></div>
-
-    <!-- Loader -->
-    <div class="loader">
-      <div class="loader-content">
-        <div class="loader-text">
-          <span>L</span>
-          <span>O</span>
-          <span>A</span>
-          <span>D</span>
-          <span>I</span>
-          <span>N</span>
-          <span>G</span>
-        </div>
-        <div class="loader-bar">
-          <div class="loader-progress"></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Hide loader as soon as DOM is ready -->
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        var loader = document.querySelector(".loader");
-        if (loader) loader.classList.add("hidden");
-      });
-    </script>
-
     <!-- Navigation -->
     <nav class="navbar">
       <div class="nav-logo">
@@ -124,8 +95,8 @@
                   x2="100%"
                   y2="100%"
                 >
-                  <stop offset="0%" style="stop-color: #667eea" />
-                  <stop offset="100%" style="stop-color: #764ba2" />
+                  <stop offset="0%" style="stop-color: #ffb454" />
+                  <stop offset="100%" style="stop-color: #ff7a2f" />
                 </linearGradient>
               </defs>
               <path
@@ -171,17 +142,11 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-      <!-- Premium: Floating geometric shapes for visual depth -->
-      <div class="hero-floating-shapes" aria-hidden="true">
-        <div class="floating-shape floating-shape--1"></div>
-        <div class="floating-shape floating-shape--2"></div>
-        <div class="floating-shape floating-shape--3"></div>
-      </div>
       <div class="hero-content">
-        <div class="hero-availability" aria-live="polite">
-          <span class="availability-dot" aria-hidden="true"></span>
-          <span class="availability-text">Available for opportunities</span>
-        </div>
+        <p class="hero-status">
+          <span class="hero-status-prompt" aria-hidden="true">~$</span>
+          open to work &mdash; Pune, IN
+        </p>
         <div class="hero-title-wrapper">
           <h1 class="hero-title">
             <div class="title-line">
@@ -234,36 +199,61 @@
 
     <!-- About Section -->
     <section id="about" class="about">
+      <!-- Constellation background -->
+      <div class="about-bg" aria-hidden="true">
+        <svg class="about-bg-dots" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <pattern id="dotPattern" x="0" y="0" width="32" height="32" patternUnits="userSpaceOnUse">
+              <circle cx="1" cy="1" r="1" fill="rgba(255,180,84,0.15)"/>
+            </pattern>
+            <radialGradient id="dotFade" cx="50%" cy="40%" r="60%">
+              <stop offset="0%" stop-color="#fff" stop-opacity="1"/>
+              <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+            </radialGradient>
+            <mask id="dotMask"><rect width="100%" height="100%" fill="url(#dotFade)"/></mask>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#dotPattern)" mask="url(#dotMask)"/>
+        </svg>
+      </div>
+
       <div class="section-header">
         <span class="section-label">01</span>
         <h2 class="section-title">About Me</h2>
       </div>
+
       <div class="about-content">
+        <!-- Animated terminal mockup -->
         <div class="about-image">
-          <div class="image-wrapper">
-            <div class="image-placeholder">
-              <span>A</span>
+          <div class="about-terminal" id="about-terminal">
+            <div class="terminal-chrome">
+              <span class="terminal-dot"></span>
+              <span class="terminal-dot"></span>
+              <span class="terminal-dot"></span>
+              <span class="terminal-title">atharva@portfolio: ~</span>
             </div>
-            <div class="image-border"></div>
+            <div class="terminal-body">
+              <div class="terminal-output" id="terminal-output" aria-live="polite"></div>
+              <div class="terminal-line terminal-current">
+                <span class="terminal-prompt">~$</span>
+                <span class="terminal-input"></span>
+                <span class="terminal-cursor" aria-hidden="true"></span>
+              </div>
+            </div>
+            <!-- Screen-reader fallback (terminal content is decorative) -->
+            <p class="sr-only">
+              Animated terminal showing whoami, project list, and status.
+              Same information is available in the bio and grid below.
+            </p>
           </div>
           <div class="about-location">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
               <circle cx="12" cy="10" r="3"></circle>
             </svg>
             <span>Pune, India</span>
           </div>
         </div>
+
         <div class="about-text">
           <p class="about-intro">
             I&rsquo;m a recent B.Tech graduate and full-stack developer based in
@@ -271,34 +261,15 @@
             interfaces that don&rsquo;t feel like an afterthought.
           </p>
           <p class="about-description">
-            I work across the stack with Next.js, TypeScript, Node.js, and
-            PostgreSQL, and I&rsquo;ve shipped both a production platform and an
-            ML-powered mobile app. On the side, I write Three.js scenes and
-            animation systems &mdash; this portfolio is one of them &mdash;
-            because how a thing <em>feels</em> matters.
+            I work across the stack with <mark class="hl">Next.js</mark>,
+            <mark class="hl">TypeScript</mark>, <mark class="hl">Node.js</mark>,
+            and <mark class="hl">PostgreSQL</mark>, and I&rsquo;ve shipped both a
+            production platform and an ML-powered mobile app. On the side, I
+            write <mark class="hl">Three.js</mark> scenes and animation systems
+            &mdash; this portfolio is one of them &mdash; because how a thing
+            <em>feels</em> matters.
           </p>
-          <div class="about-highlights">
-            <div class="highlight">
-              <span class="highlight-value">B.Tech</span>
-              <span class="highlight-label">Recent Graduate</span>
-            </div>
-            <a
-              href="https://cethub.in"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="highlight highlight-link"
-            >
-              <span class="highlight-value">
-                Live
-                <svg class="highlight-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-              </span>
-              <span class="highlight-label">cethub.in</span>
-            </a>
-            <div class="highlight">
-              <span class="highlight-value">Open</span>
-              <span class="highlight-label">to Opportunities</span>
-            </div>
-          </div>
+
         </div>
       </div>
     </section>
@@ -477,8 +448,78 @@
           </div>
         </article>
 
-        <!-- Personal Portfolio -->
+        <!-- Last Known Good -->
         <article class="project-card" data-project="4">
+          <div class="project-image project-image--lkg">
+            <div class="project-mockup project-mockup--lkg">
+              <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <defs>
+                  <linearGradient id="lkgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#34d399"/>
+                    <stop offset="100%" stop-color="#98c379"/>
+                  </linearGradient>
+                </defs>
+                <!-- editor frame -->
+                <rect x="14" y="12" width="172" height="116" rx="7" fill="rgba(20,26,22,0.95)" stroke="rgba(255,255,255,0.08)"/>
+                <circle cx="26" cy="23" r="2.5" fill="#ff5f57"/>
+                <circle cx="34" cy="23" r="2.5" fill="#febc2e"/>
+                <circle cx="42" cy="23" r="2.5" fill="#28c840"/>
+                <!-- snapshot timeline (sidebar) -->
+                <line x1="34" y1="42" x2="34" y2="116" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+                <g>
+                  <circle cx="34" cy="48" r="6" fill="none" stroke="url(#lkgGrad)" stroke-width="1.8"/>
+                  <path d="M31 48 l2 2.5 l4 -5" stroke="#34d399" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                  <circle cx="34" cy="72" r="4" fill="rgba(255,255,255,0.18)"/>
+                  <circle cx="34" cy="92" r="4" fill="rgba(255,255,255,0.12)"/>
+                  <circle cx="34" cy="110" r="4" fill="rgba(255,255,255,0.08)"/>
+                </g>
+                <!-- code lines -->
+                <g>
+                  <rect x="56" y="44" width="88" height="5" rx="2.5" fill="rgba(255,255,255,0.16)"/>
+                  <rect x="56" y="56" width="112" height="5" rx="2.5" fill="rgba(255,255,255,0.10)"/>
+                  <rect x="64" y="68" width="96" height="5" rx="2.5" fill="url(#lkgGrad)" opacity="0.55"/>
+                  <rect x="64" y="80" width="72" height="5" rx="2.5" fill="url(#lkgGrad)" opacity="0.35"/>
+                  <rect x="56" y="92" width="104" height="5" rx="2.5" fill="rgba(255,255,255,0.10)"/>
+                  <rect x="56" y="104" width="60" height="5" rx="2.5" fill="rgba(255,255,255,0.16)"/>
+                </g>
+                <!-- restore arrow: from good snapshot to code -->
+                <path d="M44 48 C 96 30, 150 32, 168 44" stroke="#34d399" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-dasharray="3 4"/>
+                <path d="M168 44 l-6 -1 M168 44 l-2 -5.5" stroke="#34d399" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+                <!-- pulse on the good snapshot -->
+                <circle cx="34" cy="48" r="10" fill="none" stroke="#34d399" stroke-width="1" opacity="0.5">
+                  <animate attributeName="r" values="8;15;8" dur="2.4s" repeatCount="indefinite"/>
+                  <animate attributeName="opacity" values="0.5;0;0.5" dur="2.4s" repeatCount="indefinite"/>
+                </circle>
+              </svg>
+            </div>
+            <span class="project-status project-status--build" aria-label="Status: Open source">
+              <span class="status-dot"></span> Open Source
+            </span>
+            <div class="project-overlay">
+              <span class="view-project">View Details</span>
+            </div>
+          </div>
+          <div class="project-info">
+            <div class="project-header">
+              <h3 class="project-title">Last Known Good</h3>
+              <span class="project-tagline">VS Code Extension</span>
+            </div>
+            <p class="project-description">
+              Snapshots your workspace at every known-good state &mdash;
+              automatically when code compiles clean &mdash; and restores it
+              in one command. Built on git plumbing, invisible to git log.
+            </p>
+            <div class="project-tags">
+              <span>TypeScript</span>
+              <span>VS Code API</span>
+              <span>Git</span>
+              <span>esbuild</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Personal Portfolio -->
+        <article class="project-card" data-project="5">
           <div class="project-image project-image--portfolio">
             <img
               src="/assets/portfolio-preview.png"
@@ -690,9 +731,9 @@
               style="
                 display: block;
                 font-weight: 700;
-                color: #a8a6ff;
+                color: #ffc678;
                 text-shadow:
-                  0 2px 8px rgba(108, 99, 255, 0.4),
+                  0 2px 8px rgba(255, 180, 84, 0.4),
                   0 1px 0 #fff;
               "
               >together!</span>

@@ -143,17 +143,16 @@ gsap.to(".contact-content > *", {
   ease: "power3.out",
 });
 
-// About highlight reveal — staggered fade-in as the strip enters
-gsap.from(".about-highlights .highlight", {
+// About terminal slide-in
+gsap.from(".about-terminal", {
   scrollTrigger: {
-    trigger: ".about-highlights",
+    trigger: ".about-terminal",
     start: "top 85%",
     toggleActions: "play none none reverse",
   },
   opacity: 0,
-  y: 24,
-  duration: 0.6,
-  stagger: 0.08,
+  x: -30,
+  duration: 0.8,
   ease: "power3.out",
 });
 

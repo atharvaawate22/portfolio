@@ -65,6 +65,24 @@ const PROJECTS = [
   },
   {
     id: 4,
+    title: "Last Known Good",
+    tagline: "VS Code Extension",
+    description:
+      "VS Code extension that answers “it was working 40 minutes ago and I don’t know which change broke it.” Snapshots the workspace at known-good states — manually, on error-free compiles, or after passing test/build tasks — and restores any of them in one command with file-by-file diff preview. Snapshots are hidden git commits under refs/lkg/*: invisible to git log and git GUIs, deduplicated by tree hash, never touching the index or working tree. A safety snapshot before every restore makes restores themselves undoable.",
+    tech: [
+      "TypeScript",
+      "VS Code API",
+      "Git plumbing",
+      "esbuild",
+      "node:test",
+    ],
+    image: null,
+    imageVariant: "lkg",
+    link: null,
+    github: "https://github.com/atharvaawate22/last-known-good",
+  },
+  {
+    id: 5,
     title: "Personal Portfolio",
     tagline: "The site you’re on",
     description:
@@ -204,28 +222,6 @@ document.querySelectorAll(".project-card").forEach((card) => {
     this.style.transform = "";
   });
 });
-
-// About Image Tilt Effect
-const aboutImage = document.querySelector(".about-image");
-if (aboutImage) {
-  aboutImage.addEventListener("mousemove", function (e) {
-    const rect = this.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-
-    const rotateX = (y - centerY) / 30;
-    const rotateY = (centerX - x) / 30;
-
-    this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-  });
-
-  aboutImage.addEventListener("mouseleave", function () {
-    this.style.transform = "perspective(1000px) rotateX(0) rotateY(0)";
-  });
-}
 
 // Skill Card Hover Glow Effect
 document.querySelectorAll(".skill-card").forEach((card) => {
