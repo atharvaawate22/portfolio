@@ -1,10 +1,3 @@
-/* Hide loader when hidden */
-.loader.hidden {
-  opacity: 0;
-  pointer-events: none;
-  visibility: hidden;
-  transition: opacity 0.5s;
-}
 /* ============================================
    Components - Reusable UI Elements
    ============================================ */
@@ -31,7 +24,7 @@
   position: fixed;
   width: 40px;
   height: 40px;
-  border: 1px solid rgba(108, 99, 255, 0.5);
+  border: 1px solid rgba(255, 180, 84, 0.5);
   border-radius: 50%;
   pointer-events: none;
   z-index: 99998;
@@ -67,84 +60,6 @@
   button {
     cursor: pointer;
   }
-}
-
-/* Loader */
-.loader {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: var(--color-bg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10002;
-}
-
-.loader-content {
-  text-align: center;
-  animation: loaderPulse 2s ease-in-out infinite;
-}
-
-.loader-text {
-  display: flex;
-  gap: 8px;
-  font-family: var(--font-primary);
-  font-size: 2rem;
-  font-weight: 600;
-  letter-spacing: 0.3em;
-  margin-bottom: 40px;
-}
-
-.loader-text span {
-  display: inline-block;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: loaderText 0.5s var(--transition-smooth) forwards;
-}
-
-.loader-text span:nth-child(1) {
-  animation-delay: 0.1s;
-}
-.loader-text span:nth-child(2) {
-  animation-delay: 0.15s;
-}
-.loader-text span:nth-child(3) {
-  animation-delay: 0.2s;
-}
-.loader-text span:nth-child(4) {
-  animation-delay: 0.25s;
-}
-.loader-text span:nth-child(5) {
-  animation-delay: 0.3s;
-}
-.loader-text span:nth-child(6) {
-  animation-delay: 0.35s;
-}
-.loader-text span:nth-child(7) {
-  animation-delay: 0.4s;
-}
-
-.loader-bar {
-  width: 200px;
-  height: 2px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 2px;
-  overflow: hidden;
-  margin: 0 auto;
-}
-
-.loader-progress {
-  width: 0;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    var(--color-gradient-1),
-    var(--color-gradient-2)
-  );
-  animation: loaderProgress 2s var(--transition-smooth) forwards;
 }
 
 /* Navigation */
@@ -261,7 +176,7 @@
   height: 0;
   background: radial-gradient(
     circle,
-    rgba(108, 99, 255, 0.1) 0%,
+    rgba(255, 180, 84, 0.1) 0%,
     transparent 70%
   );
   border-radius: 50%;
@@ -332,6 +247,10 @@
 }
 
 /* Mobile Menu */
+body.menu-open {
+  overflow: hidden;
+}
+
 .mobile-menu {
   position: fixed;
   top: 0;
@@ -415,7 +334,7 @@
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: var(--color-text);
+  color: var(--color-on-accent);
   position: relative;
   overflow: hidden;
   transition:
@@ -444,7 +363,7 @@
 }
 
 .navbar.scrolled {
-  background: rgba(10, 10, 10, 0.95);
+  background: rgba(11, 10, 8, 0.95);
   backdrop-filter: blur(12px);
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
 }
@@ -472,8 +391,8 @@
 .btn-primary:hover {
   transform: translateY(-4px) scale(1.02);
   box-shadow:
-    0 20px 40px rgba(108, 99, 255, 0.4),
-    0 0 20px rgba(108, 99, 255, 0.2);
+    0 20px 40px rgba(255, 180, 84, 0.4),
+    0 0 20px rgba(255, 180, 84, 0.2);
   background-position: 100% 100%;
 }
 
@@ -530,9 +449,9 @@
 
 .btn-secondary:hover {
   border-color: var(--color-accent);
-  background: rgba(108, 99, 255, 0.1);
+  background: rgba(255, 180, 84, 0.1);
   transform: translateY(-3px);
-  box-shadow: 0 10px 30px rgba(108, 99, 255, 0.15);
+  box-shadow: 0 10px 30px rgba(255, 180, 84, 0.15);
 }
 
 .btn-outline {
@@ -577,7 +496,7 @@
 .btn-outline:hover {
   border-color: var(--color-accent);
   transform: translateY(-4px);
-  box-shadow: 0 15px 35px rgba(108, 99, 255, 0.3);
+  box-shadow: 0 15px 35px rgba(255, 180, 84, 0.3);
 }
 
 .btn-outline:hover::before {
@@ -665,7 +584,7 @@
 }
 
 .modal-close:hover {
-  background: rgba(108, 99, 255, 0.3);
+  background: rgba(255, 180, 84, 0.3);
   transform: rotate(90deg);
 }
 
@@ -716,7 +635,7 @@
 
 .modal-tags span {
   padding: 8px 16px;
-  background: rgba(108, 99, 255, 0.1);
+  background: rgba(255, 180, 84, 0.1);
   border-radius: 20px;
   font-size: 0.875rem;
   font-weight: 500;

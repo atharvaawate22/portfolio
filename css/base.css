@@ -4,21 +4,27 @@
 
 /* CSS Variables */
 :root {
-  --color-bg: #0a0a0a;
-  --color-bg-secondary: #111111;
+  /* Warm-tinted near-blacks so the amber accent feels native, not pasted on */
+  --color-bg: #0b0a08;
+  --color-bg-secondary: #14110b;
   --color-text: #ffffff;
-  --color-text-secondary: #888888;
-  --color-accent: #6c63ff;
-  --color-accent-hover: #5a52e0;
-  --color-gradient-1: #667eea;
-  --color-gradient-2: #764ba2;
+  --color-text-secondary: #a49b8c;
+  --color-accent: #ffb454;
+  --color-accent-hover: #ffc678;
+  /* Wider gold → ember range gives gradient elements real depth */
+  --color-gradient-1: #ffd08a;
+  --color-gradient-2: #ff7a2f;
+  /* Dark text for use on amber accent surfaces (white fails contrast) */
+  --color-on-accent: #140d04;
+  /* Cool counterpoint for 3D scenes and small structural accents */
+  --color-cool: #6f9fbe;
   --font-primary: "Space Grotesk", sans-serif;
   --font-secondary: "Inter", sans-serif;
   --transition-smooth: cubic-bezier(0.65, 0, 0.35, 1);
   --transition-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
   /* Premium Enhancement Variables */
-  --glow-accent: rgba(108, 99, 255, 0.4);
-  --glow-gradient: rgba(118, 75, 162, 0.3);
+  --glow-accent: rgba(255, 180, 84, 0.4);
+  --glow-gradient: rgba(255, 122, 47, 0.3);
 }
 
 /* Reduced Motion - Accessibility */
@@ -33,7 +39,6 @@
   }
 
   .parallax-layer,
-  .floating-shape,
   .hero-gradient-overlay {
     animation: none !important;
     transform: none !important;
@@ -89,7 +94,7 @@ button {
 
 /* Selection */
 ::selection {
-  background: rgba(108, 99, 255, 0.3);
+  background: rgba(255, 180, 84, 0.3);
   color: var(--color-text);
 }
 

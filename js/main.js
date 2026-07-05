@@ -4,34 +4,33 @@
 
 // Wait for DOM to be ready
 document.addEventListener("DOMContentLoaded", () => {
-  // Loader
-  const loader = document.querySelector(".loader");
-  if (loader) {
-    loader.classList.add("hidden");
-  }
-  // Trigger hero animation after loader
+  // Hero entrance animation
   if (typeof window.animateHero === "function") {
     window.animateHero();
   }
 
   // Mobile Menu
   const hamburger = document.querySelector(".nav-menu-btn");
-  const navLinks = document.querySelector(".nav-links");
-  const navLinksItems = document.querySelectorAll(".nav-links a");
+  const mobileMenu = document.querySelector(".mobile-menu");
+  const mobileLinks = document.querySelectorAll(".mobile-link");
 
-  if (hamburger && navLinks) {
+  if (hamburger && mobileMenu) {
+    const closeMenu = () => {
+      hamburger.classList.remove("active");
+      mobileMenu.classList.remove("active");
+      document.body.classList.remove("menu-open");
+      hamburger.setAttribute("aria-expanded", "false");
+    };
+
     hamburger.addEventListener("click", () => {
       const isOpen = hamburger.classList.toggle("active");
-      navLinks.classList.toggle("active");
+      mobileMenu.classList.toggle("active", isOpen);
+      document.body.classList.toggle("menu-open", isOpen);
       hamburger.setAttribute("aria-expanded", isOpen);
     });
 
-    navLinksItems.forEach((link) => {
-      link.addEventListener("click", () => {
-        hamburger.classList.remove("active");
-        navLinks.classList.remove("active");
-        hamburger.setAttribute("aria-expanded", "false");
-      });
+    mobileLinks.forEach((link) => {
+      link.addEventListener("click", closeMenu);
     });
   }
 

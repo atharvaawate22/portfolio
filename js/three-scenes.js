@@ -21,10 +21,17 @@ function initHero3D() {
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   container.appendChild(renderer.domElement);
 
+  // Theme colors from CSS variables (single source of truth for palette)
+  const rootStyles = getComputedStyle(document.documentElement);
+  const accentColor =
+    rootStyles.getPropertyValue("--color-accent").trim() || "#ffb454";
+  const coolColor =
+    rootStyles.getPropertyValue("--color-cool").trim() || "#6f9fbe";
+
   // Icosahedron geometry
   const geometry = new THREE.IcosahedronGeometry(2.5, 1);
   const material = new THREE.MeshBasicMaterial({
-    color: 0x6c63ff,
+    color: accentColor,
     wireframe: true,
     transparent: true,
     opacity: 0.6,
@@ -32,13 +39,13 @@ function initHero3D() {
   const icosahedron = new THREE.Mesh(geometry, material);
   scene.add(icosahedron);
 
-  // Inner sphere
+  // Inner sphere — cool steel blue against the amber outer shell
   const innerGeometry = new THREE.IcosahedronGeometry(2, 0);
   const innerMaterial = new THREE.MeshBasicMaterial({
-    color: 0x764ba2,
+    color: coolColor,
     wireframe: true,
     transparent: true,
-    opacity: 0.3,
+    opacity: 0.35,
   });
   const innerIcosahedron = new THREE.Mesh(innerGeometry, innerMaterial);
   scene.add(innerIcosahedron);
@@ -59,7 +66,7 @@ function initHero3D() {
 
   const particlesMaterial = new THREE.PointsMaterial({
     size: 0.02,
-    color: 0x6c63ff,
+    color: accentColor,
     transparent: true,
     opacity: 0.8,
   });
@@ -133,11 +140,11 @@ function initContact3D() {
   // Theme colors
   const rootStyles = getComputedStyle(document.documentElement);
   const accentColor =
-    rootStyles.getPropertyValue("--color-accent").trim() || "#6c63ff";
+    rootStyles.getPropertyValue("--color-accent").trim() || "#ffb454";
   const gradientColor1 =
-    rootStyles.getPropertyValue("--color-gradient-1").trim() || "#667eea";
+    rootStyles.getPropertyValue("--color-gradient-1").trim() || "#ffb454";
   const gradientColor2 =
-    rootStyles.getPropertyValue("--color-gradient-2").trim() || "#764ba2";
+    rootStyles.getPropertyValue("--color-gradient-2").trim() || "#ff7a2f";
 
   // Scene setup
   const scene = new THREE.Scene();
