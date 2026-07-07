@@ -7,9 +7,12 @@ const projectModal = document.getElementById("project-modal");
 const modalOverlay = projectModal?.querySelector(".modal-overlay");
 const modalClose = projectModal?.querySelector(".modal-close");
 
-// Project data — matches the four cards in index.html in order.
+// Project data — matches the cards in index.html in order.
 // IMPORTANT: keep this array length and order in sync with the .project-card
 // elements; the card index drives which entry opens.
+// `linkLabel` customizes the primary button text ("View Live" by default).
+// TODO: replace "#" placeholder links (yoga APK, swadesh live, sta live)
+// and the profile-URL github placeholders once those repos/artifacts exist.
 const PROJECTS = [
   {
     id: 1,
@@ -22,7 +25,6 @@ const PROJECTS = [
       "TypeScript",
       "Tailwind",
       "Node.js",
-      "Express",
       "Zod",
       "PostgreSQL",
       "Redis",
@@ -31,7 +33,7 @@ const PROJECTS = [
     image: "/assets/cethub-preview.jpg",
     imageVariant: "cethub",
     link: "https://cethub.in",
-    github: null, // source-available, repo not public
+    github: "https://github.com/atharvaawate22/career-guidance-platform",
   },
   {
     id: 2,
@@ -48,8 +50,9 @@ const PROJECTS = [
     ],
     image: null,
     imageVariant: "yoga",
-    link: null,
-    github: null,
+    link: "#", // placeholder until the APK is hosted
+    linkLabel: "Download APK",
+    github: "https://github.com/atharvaawate22", // placeholder
   },
   {
     id: 3,
@@ -60,8 +63,8 @@ const PROJECTS = [
     tech: ["MongoDB", "Express", "React", "Node.js", "JWT", "REST APIs"],
     image: null,
     imageVariant: "swadesh",
-    link: null,
-    github: null,
+    link: "#", // placeholder until deployed
+    github: "https://github.com/atharvaawate22", // placeholder
   },
   {
     id: 4,
@@ -78,7 +81,8 @@ const PROJECTS = [
     ],
     image: null,
     imageVariant: "lkg",
-    link: null,
+    link: "https://github.com/atharvaawate22/last-known-good/releases",
+    linkLabel: "View Extension",
     github: "https://github.com/atharvaawate22/last-known-good",
   },
   {
@@ -90,7 +94,7 @@ const PROJECTS = [
     tech: ["Python", "FastAPI", "SQLAlchemy", "React", "Groq API"],
     image: null,
     imageVariant: "sta",
-    link: null,
+    link: "#", // placeholder until deployed
     github: "https://github.com/atharvaawate22/STA-debugger",
   },
   {
@@ -102,7 +106,7 @@ const PROJECTS = [
     tech: ["Vanilla JS", "Three.js", "GSAP", "CSS3", "HTML5"],
     image: "/assets/portfolio-preview.png",
     imageVariant: "portfolio",
-    link: "https://atharvaawate.me",
+    link: null, // no "View Live" — the visitor is already on it
     github: "https://github.com/atharvaawate22/portfolio",
   },
 ];
@@ -155,7 +159,7 @@ function openProjectModal(projectId) {
   }
 
   // Action buttons: hide entirely when no link rather than showing a dead button
-  const setActionButton = (btn, url, fallbackLabel) => {
+  const setActionButton = (btn, url, fallbackLabel, labelText) => {
     if (!btn) return;
     if (url) {
       btn.style.display = "";
@@ -168,9 +172,18 @@ function openProjectModal(projectId) {
       btn.style.display = "none";
       btn.onclick = null;
     }
+    if (labelText) {
+      const span = btn.querySelector("span");
+      if (span) span.textContent = labelText;
+    }
     if (fallbackLabel) btn.setAttribute("aria-label", fallbackLabel);
   };
-  setActionButton(liveLink, project.link, "View live site");
+  setActionButton(
+    liveLink,
+    project.link,
+    project.linkLabel || "View live site",
+    project.linkLabel || "View Live"
+  );
   setActionButton(githubLink, project.github, "View source on GitHub");
 
   // Show modal

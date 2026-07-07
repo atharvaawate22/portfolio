@@ -129,18 +129,30 @@ gsap.from(".skill-item", {
   ease: "power2.out",
 });
 
-// Contact animation
-gsap.to(".contact-content > *", {
+// Contact console reveal
+gsap.from(".contact-console", {
   scrollTrigger: {
     trigger: ".contact",
     start: "top 70%",
-    toggleActions: "play none none none",
+    toggleActions: "play none none reverse",
   },
-  opacity: 1,
-  y: 0,
+  opacity: 0,
+  y: 32,
   duration: 0.8,
-  stagger: 0.1,
   ease: "power3.out",
+});
+
+gsap.from(".contact-row, .console-status", {
+  scrollTrigger: {
+    trigger: ".contact-console",
+    start: "top 75%",
+    toggleActions: "play none none reverse",
+  },
+  opacity: 0,
+  x: -16,
+  duration: 0.5,
+  stagger: 0.09,
+  ease: "power2.out",
 });
 
 // About terminal slide-in
