@@ -82,6 +82,29 @@
     });
   });
 
+  /* ---------- Live IST clock in the contact console ---------- */
+  const contactClock = document.getElementById("contact-clock");
+  if (contactClock) {
+    const fmt = new Intl.DateTimeFormat("en-GB", {
+      timeZone: "Asia/Kolkata",
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: false,
+    });
+    const tick = () => {
+      contactClock.textContent = `${fmt.format(new Date())} IST`;
+    };
+    tick();
+    // Re-sync at the next minute boundary, then tick every 60s
+    const now = new Date();
+    const msToNextMinute =
+      (60 - now.getSeconds()) * 1000 - now.getMilliseconds();
+    setTimeout(() => {
+      tick();
+      setInterval(tick, 60000);
+    }, msToNextMinute);
+  }
+
   /* ---------- About terminal: auto-typing whoami sequence ---------- */
   const terminal = document.getElementById("about-terminal");
   const termOutput = document.getElementById("terminal-output");

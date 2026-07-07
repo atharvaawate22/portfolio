@@ -47,4 +47,4 @@ same variables, so changing the palette is a one-file edit.
 
 **Atharva Awate** — [GitHub](https://github.com/atharvaawate22) ·
 [LinkedIn](https://www.linkedin.com/in/atharva-d-awate) ·
-[atharva@atharvaawate.me](mailto:atharva@atharvaawate.me)
+[atharvaawate14@gmail.com](mailto:atharvaawate14@gmail.com)
