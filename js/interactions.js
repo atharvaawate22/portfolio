@@ -6,6 +6,7 @@
 const projectModal = document.getElementById("project-modal");
 const modalOverlay = projectModal?.querySelector(".modal-overlay");
 const modalClose = projectModal?.querySelector(".modal-close");
+let modalOpener = null;
 
 // Project data — matches the cards in index.html in order.
 // IMPORTANT: keep this array length and order in sync with the .project-card
@@ -30,7 +31,7 @@ const PROJECTS = [
       "Redis",
       "Sentry",
     ],
-    image: "/assets/cethub-preview.jpg",
+    image: "/assets/cethub-preview.png",
     imageVariant: "cethub",
     link: "https://cethub.in",
     github: "https://github.com/atharvaawate22/career-guidance-platform",
@@ -187,14 +188,19 @@ function openProjectModal(projectId) {
   setActionButton(githubLink, project.github, "View source on GitHub");
 
   // Show modal
+  modalOpener = document.activeElement;
   projectModal.classList.add("active");
   document.body.style.overflow = "hidden";
+  // The modal is still visibility:hidden on this frame; focus once it's shown
+  setTimeout(() => modalClose?.focus(), 50);
 }
 
 function closeProjectModal() {
   if (!projectModal) return;
   projectModal.classList.remove("active");
   document.body.style.overflow = "";
+  if (modalOpener && document.contains(modalOpener)) modalOpener.focus();
+  modalOpener = null;
 }
 
 // Modal event listeners
@@ -203,6 +209,26 @@ modalClose?.addEventListener("click", closeProjectModal);
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape" && projectModal?.classList.contains("active")) {
     closeProjectModal();
+    return;
+  }
+  // Keep Tab focus inside the open modal
+  if (e.key === "Tab" && projectModal?.classList.contains("active")) {
+    const focusable = [
+      ...projectModal.querySelectorAll("a[href], button, [tabindex]"),
+    ].filter((el) => el.offsetParent !== null && el.tabIndex >= 0);
+    if (!focusable.length) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (!projectModal.contains(document.activeElement)) {
+      e.preventDefault();
+      first.focus();
+    } else if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
   }
 });
 

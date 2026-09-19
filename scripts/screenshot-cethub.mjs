@@ -9,7 +9,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const OUT = path.resolve(__dirname, "..", "assets", "cethub-preview.jpg");
+const OUT = path.resolve(__dirname, "..", "assets", "cethub-preview.png");
 
 // Run from a dir that can resolve `playwright`, e.g.
 //   cd ../career-guidance-platform/frontend && node ../../portfolio/scripts/screenshot-cethub.mjs

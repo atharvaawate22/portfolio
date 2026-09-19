@@ -43,7 +43,8 @@ function animateCursor() {
 }
 
 // Only run custom cursor on devices with a precise pointer (mouse/trackpad)
-if (window.matchMedia('(pointer: fine)').matches) {
+if (window.matchMedia('(pointer: fine)').matches && cursor && cursorFollower) {
+  document.documentElement.classList.add("has-custom-cursor");
   animateCursor();
 }
 
