@@ -39,21 +39,21 @@ const PROJECTS = [
   {
     id: 2,
     title: "Yoga Therapy App",
-    tagline: "On-device pose correction",
+    tagline: "AI pose correction",
     description:
-      "Mobile app that analyzes yoga poses in real time. Extracts 33 3D body landmarks via MediaPipe Pose, engineers hip-normalized joint-angle features, and runs them through a scikit-learn classifier (Random Forest / SVM / MLP) converted to TensorFlow Lite for on-device inference. A real-time feedback engine computes angular deviation from reference templates, surfaces joint-specific corrections, and tracks per-session accuracy and streaks on a progress dashboard.",
+      "Mobile app that checks yoga poses from the camera. Each frame goes to a FastAPI backend, where MoveNet (TF-Lite) finds 17 body keypoints. The keypoints are normalized around the hip midpoint and scaled by torso width, then a small Keras MLP classifies the pose. Confidence and temporal-stability gates keep the result steady before rule-based checks return joint-specific corrections. The app keeps a practice history and tracks daily streaks.",
     tech: [
       "React Native",
       "Python",
-      "MediaPipe Pose",
-      "TensorFlow Lite",
-      "scikit-learn",
+      "FastAPI",
+      "TensorFlow",
+      "MoveNet",
     ],
     image: null,
     imageVariant: "yoga",
     link: "#", // placeholder until the APK is hosted
     linkLabel: "Download APK",
-    github: "https://github.com/atharvaawate22", // placeholder
+    github: "https://github.com/atharvaawate22/yoga-therapy-app",
   },
   {
     id: 3,
@@ -89,7 +89,7 @@ const PROJECTS = [
   {
     id: 5,
     title: "STA Debugger",
-    tagline: "LLM-assisted timing analysis",
+    tagline: "Rule-based timing analysis",
     description:
       "Full-stack tool that parses OpenSTA static timing analysis reports and diagnoses every violation with a rule-based engine — bottleneck cells, excessive logic depth, clock skew, and severity per path, plus WNS/TNS metrics, worst-path slack charts, and stage-by-stage delay breakdowns. An optional LLM layer (Groq) turns each diagnosis into a plain-English explanation; the tool is fully functional without it. FastAPI + SQLAlchemy backend with JWT auth and per-user analysis history, React + Vite frontend.",
     tech: ["Python", "FastAPI", "SQLAlchemy", "React", "Groq API"],
@@ -162,7 +162,9 @@ function openProjectModal(projectId) {
   // Action buttons: hide entirely when no link rather than showing a dead button
   const setActionButton = (btn, url, fallbackLabel, labelText) => {
     if (!btn) return;
-    if (url) {
+    // "#" marks a link that doesn't exist yet (see the TODO above), so it
+    // counts as no link; otherwise the button would open a blank tab.
+    if (url && url !== "#") {
       btn.style.display = "";
       btn.onclick = (e) => {
         e.preventDefault();
