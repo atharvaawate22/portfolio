@@ -13,7 +13,7 @@ let modalOpener = null;
 // elements; the card index drives which entry opens.
 // `linkLabel` customizes the primary button text ("View Live" by default).
 // TODO: replace "#" placeholder links (yoga APK, swadesh live, sta live)
-// and the profile-URL github placeholders once those repos/artifacts exist.
+// and set swadesh's github once those repos/artifacts exist.
 const PROJECTS = [
   {
     id: 1,
@@ -65,7 +65,7 @@ const PROJECTS = [
     image: null,
     imageVariant: "swadesh",
     link: "#", // placeholder until deployed
-    github: "https://github.com/atharvaawate22", // placeholder
+    github: null, // no public repo; null hides the GitHub button
   },
   {
     id: 4,
