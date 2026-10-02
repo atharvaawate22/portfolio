@@ -13,8 +13,8 @@ let modalOpener = null;
 // elements; the card index drives which entry opens.
 // `linkLabel` customizes the primary button text ("View Live" by default).
 // `highlights` (optional) renders as a bullet list under the description.
-// TODO: replace "#" placeholder links (yoga APK, swadesh live, sta live)
-// and set swadesh's github once those repos/artifacts exist.
+// TODO: replace "#" placeholder links (swadesh live, sta live) and set
+// swadesh's github once those repos/artifacts exist.
 const PROJECTS = [
   {
     id: 1,
@@ -26,6 +26,7 @@ const PROJECTS = [
       "Built 370+ statically rendered per-college pages with SSR/ISR and JSON-LD structured data, fixing a crawler-invisibility issue. During the admission season the site ranked just below the official admissions website for “cutoff explorer” searches on Google.",
       "Peaked at ~1,000 daily visits during the admission season.",
       "CI/CD via GitHub Actions: lint, typecheck, coverage-gated tests and Playwright E2E smoke tests, plus keepalive and CAP-deadline reminder cron jobs.",
+      "Consultation booking with slot-conflict checks, Google Meet links via the Google Calendar API and email confirmations, plus a role-protected admin dashboard (JWT, bcrypt, rate limiting).",
       "Launched Avani, a RAG-powered admissions chatbot (hybrid keyword + pgvector retrieval, Gemini for generation). It’s live as an early version under active refinement; WhatsApp integration is in progress.",
     ],
     tech: [
@@ -34,11 +35,18 @@ const PROJECTS = [
       "Node.js",
       "Express",
       "PostgreSQL",
+      "Supabase",
       "pgvector",
       "Gemini",
       "Redis",
+      "Tailwind",
+      "Zod",
+      "JWT",
+      "Sentry",
       "GitHub Actions",
       "Playwright",
+      "Vercel",
+      "Render",
     ],
     image: "/assets/cethub-preview.png",
     imageVariant: "cethub",
@@ -54,7 +62,7 @@ const PROJECTS = [
     highlights: [
       "MoveNet (TFLite) finds body keypoints; a custom feature vector feeds a lightweight MLP (TensorFlow/Keras) that recognizes 15+ poses.",
       "A rule-based corrective-feedback engine speaks its corrections aloud via text-to-speech.",
-      "10+ screens, offline-first storage, custom routines and streak tracking.",
+      "10+ screens, offline-first storage, custom routines, a guided Surya Namaskar mode, daily reminders and streak tracking.",
       "Inference runs on a FastAPI service, containerized with Docker and now hosted on AWS Lambda.",
     ],
     tech: [
@@ -64,12 +72,14 @@ const PROJECTS = [
       "FastAPI",
       "TensorFlow",
       "MoveNet",
+      "OpenCV",
       "Docker",
       "AWS Lambda",
     ],
     image: null,
     imageVariant: "yoga",
-    link: "#", // placeholder until the APK is hosted
+    // Auto-updated by the EAS build on every push to main
+    link: "https://github.com/atharvaawate22/yoga-therapy-app/releases/download/latest-preview/yoga-therapy.apk",
     linkLabel: "Download APK",
     github: "https://github.com/atharvaawate22/yoga-therapy-app",
   },
@@ -78,11 +88,12 @@ const PROJECTS = [
     title: "Last Known Good",
     tagline: "VS Code extension · Jul 2026",
     description:
-      "Published VS Code extension that auto-snapshots a workspace at known-good states (clean compile, passing tests, or a manual checkpoint). Snapshots use pure git plumbing (git stash create, a temporary index, write-tree/commit-tree) and live under shadow refs, so they never show up in git log.",
+      "Published VS Code extension that auto-snapshots a workspace at known-good states (clean compile, passing tests, or a manual checkpoint). Snapshots are built with pure git plumbing (a temporary index, read-tree, add, write-tree and commit-tree) and live under shadow refs (refs/lkg/*), so they never touch your index or show up in git log.",
     highlights: [
       "Undoable restore with per-file diff preview.",
       "Deduplicated by tree hash, with tiered retention.",
       "Explorer timeline UI and a status bar indicator.",
+      "Unit tests against real temporary git repos, plus an end-to-end suite that drives a VS Code Extension Development Host.",
     ],
     tech: ["TypeScript", "VS Code API", "Git plumbing", "esbuild", "node:test"],
     image: null,
@@ -96,8 +107,8 @@ const PROJECTS = [
     title: "STA Debugger",
     tagline: "Academic group project",
     description:
-      "Academic group project, built collaboratively and then extended and improved. A full-stack tool that parses OpenSTA static timing analysis reports and diagnoses every violation with a rule-based engine — bottleneck cells, excessive logic depth, clock skew, and severity per path, plus WNS/TNS metrics, worst-path slack charts, and stage-by-stage delay breakdowns. An optional LLM layer (Groq) turns each diagnosis into a plain-English explanation; the tool is fully functional without it. FastAPI + SQLAlchemy backend with JWT auth and per-user analysis history, React + Vite frontend.",
-    tech: ["Python", "FastAPI", "SQLAlchemy", "React", "Groq API"],
+      "Academic group project, built collaboratively and then extended and improved. A full-stack tool that parses OpenSTA static timing analysis reports and diagnoses every violation with a rule-based engine — bottleneck cells, excessive logic depth, clock skew, and severity per path, plus WNS/TNS metrics, worst-path slack charts, and stage-by-stage delay breakdowns. An optional LLM layer (Groq) turns each diagnosis into a plain-English explanation; the tool is fully functional without it. Violations that share logic are grouped by root cause, hold fixes are checked against their setup paths, and two reports can be compared before/after. FastAPI + SQLAlchemy backend with JWT auth, per-user analysis history and an admin console; React + Vite frontend; tested with pytest.",
+    tech: ["Python", "FastAPI", "SQLAlchemy", "React", "Vite", "Groq API", "pytest"],
     image: null,
     imageVariant: "sta",
     link: "#", // placeholder until deployed
@@ -106,7 +117,7 @@ const PROJECTS = [
   {
     id: 5,
     title: "Swadesh Shop",
-    tagline: "MERN E-commerce Platform",
+    tagline: "MERN E-commerce Platform · Aug 2025",
     description:
       "Full-stack e-commerce app built on the MERN stack. Express.js REST APIs for product, cart, and order modules with controller→service layering and structured error handling. Mongoose schemas for products, orders, and users; JWT middleware and server-side validation on protected routes. Integrated a geolocation API for location-based delivery, and implemented payment workflows with transaction validation.",
     tech: ["MongoDB", "Express", "React", "Node.js", "JWT", "REST APIs"],
