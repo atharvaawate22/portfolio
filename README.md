@@ -14,6 +14,9 @@ GSAP scroll animations — no framework, no build step.
 - Hero text scramble; backdrop word cycles through `CRAFT / BUILD / SHIP`
 - Project cards with per-project SVG mockups and real screenshots, each
   opening a detail modal (keyboard-operable)
+- Education & credentials section styled as `~/education`,
+  `~/certifications`, `~/publications` blocks
+- Resume download (`assets/Atharva_Awate_Resume.pdf`)
 - Magnetic cursor and CTAs on fine-pointer devices
 - Respects `prefers-reduced-motion` (static terminal snapshot, no scramble)
 
@@ -26,7 +29,7 @@ css/                base (variables/reset), components, sections,
 js/                 cursor, effects (terminal/scramble), animations (GSAP),
                     three-scenes, interactions (modal), main (nav)
 assets/             favicons, project screenshots
-scripts/            one-off screenshot helper
+scripts/            one-off screenshot helpers (CET Hub preview, OG image)
 ```
 
 ## Run locally
@@ -46,5 +49,5 @@ same variables, so changing the palette is a one-file edit.
 ## Author
 
 **Atharva Awate** — [GitHub](https://github.com/atharvaawate22) ·
-[LinkedIn](https://www.linkedin.com/in/atharva-d-awate) ·
+[LinkedIn](https://www.linkedin.com/in/atharvaawate) ·
 [atharvaawate14@gmail.com](mailto:atharvaawate14@gmail.com)

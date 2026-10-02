@@ -401,7 +401,7 @@
   transform: scale(1.04);
 }
 
-/* Browser frame mock (CETHub) */
+/* Browser frame mock (CET Hub) */
 .browser-frame {
   width: 100%;
   max-width: 280px;
@@ -637,7 +637,7 @@
   display: none !important;
 }
 
-#modalImage[data-variant="cethub"]::before { content: "CETHub"; }
+#modalImage[data-variant="cethub"]::before { content: "CET Hub"; }
 #modalImage[data-variant="yoga"]::before { content: "Yoga"; }
 #modalImage[data-variant="swadesh"]::before { content: "MERN"; }
 #modalImage[data-variant="lkg"]::before { content: "LKG"; }

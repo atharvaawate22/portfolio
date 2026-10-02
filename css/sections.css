@@ -120,6 +120,26 @@
   line-height: 1.8;
 }
 
+.hero-link {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 180, 84, 0.4);
+  text-underline-offset: 4px;
+  transition: text-decoration-color 0.25s ease;
+}
+
+.hero-link:hover {
+  text-decoration-color: var(--color-accent);
+}
+
+.hero-cta {
+  flex-wrap: wrap;
+}
+
+.btn-resume {
+  gap: 10px;
+}
+
 .hero-cta {
   display: flex;
   gap: 20px;
@@ -719,6 +739,14 @@
   transform: translateY(-1px);
 }
 
+.project-note {
+  display: block;
+  margin-bottom: 6px;
+  font-style: italic;
+  color: var(--color-text);
+  opacity: 0.8;
+}
+
 .projects-cta {
   display: flex;
   justify-content: center;
@@ -1000,6 +1028,123 @@
   .skill-item {
     padding: 16px;
     gap: 16px;
+  }
+}
+
+/* Education Section */
+/* Directory-style blocks (~/education, ~/certifications …) with
+   title → date rows, matching the contact console's config-file look */
+.education {
+  padding: 32px 48px 120px 48px;
+}
+
+.cred-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.cred-col {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.cred-block {
+  padding: 28px 32px 12px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+}
+
+.cred-path {
+  font-family: "SFMono-Regular", "JetBrains Mono", "Fira Code", Consolas, monospace;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-accent);
+  letter-spacing: 0.02em;
+  margin-bottom: 8px;
+}
+
+.cred-path span {
+  color: var(--color-text-secondary);
+}
+
+.cred-entry {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.cred-entry:last-child {
+  border-bottom: none;
+}
+
+.cred-entry-top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.cred-title {
+  font-family: var(--font-primary);
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.cred-date {
+  flex-shrink: 0;
+  font-family: "SFMono-Regular", "JetBrains Mono", "Fira Code", Consolas, monospace;
+  font-size: 0.8rem;
+  color: var(--color-accent);
+  white-space: nowrap;
+}
+
+.cred-org {
+  font-size: 0.9rem;
+  color: var(--color-text);
+  opacity: 0.85;
+}
+
+.cred-meta {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+}
+
+@media (max-width: 900px) {
+  .cred-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .cred-col {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .education {
+    padding: 60px 20px;
+  }
+  .cred-block {
+    padding: 20px 20px 6px;
+  }
+  .cred-title {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .education {
+    padding: 50px 16px;
+  }
+  .cred-entry-top {
+    flex-direction: column;
+    gap: 2px;
   }
 }
 

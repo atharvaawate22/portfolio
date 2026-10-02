@@ -60,7 +60,7 @@ function animateHero() {
 
 // Section header animations - simple fade in
 const sections = document.querySelectorAll(
-  ".about, .projects, .skills, .contact"
+  ".about, .projects, .skills, .education, .contact"
 );
 
 sections.forEach((section) => {
@@ -126,6 +126,20 @@ gsap.from(".skill-item", {
   scale: 0.95,
   duration: 0.5,
   stagger: 0.08,
+  ease: "power2.out",
+});
+
+// Education & credentials blocks
+gsap.from(".cred-block", {
+  scrollTrigger: {
+    trigger: ".cred-grid",
+    start: "top 85%",
+    toggleActions: "play none none reverse",
+  },
+  y: 30,
+  opacity: 0,
+  duration: 0.7,
+  stagger: 0.12,
   ease: "power2.out",
 });
 

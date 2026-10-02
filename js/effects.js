@@ -132,14 +132,14 @@
           cmd: "whoami",
           out: [
             '<span class="out-arrow">→</span> Atharva Awate',
-            '<span class="out-arrow">→</span> Full-stack developer &amp; creative coder',
+            '<span class="out-arrow">→</span> Full-stack developer · Generative AI',
           ],
         },
         {
           cmd: "cat about.md",
           out: [
-            '<span class="out-string">Recent B.Tech grad based in Pune, India.</span>',
-            '<span class="out-string">Builds web apps end-to-end. Writes Three.js for fun.</span>',
+            '<span class="out-string">B.Tech E&amp;TC, VIT Pune (2022–2026). Based in Pune, India.</span>',
+            '<span class="out-string">Next.js, Node.js, PostgreSQL. Building CET Hub.</span>',
           ],
         },
         {
@@ -149,7 +149,7 @@
         {
           cmd: "ls projects/",
           out: [
-            '<span class="out-dir">cethub/</span>   <span class="out-dir">last-known-good/</span>   <span class="out-dir">sta-debugger/</span>   <span class="out-dir">yoga-therapy/</span>   <span class="out-dir">swadesh-shop/</span>   <span class="out-dir">portfolio/</span>',
+            '<span class="out-dir">cethub/</span>   <span class="out-dir">yoga-therapy/</span>   <span class="out-dir">last-known-good/</span>   <span class="out-dir">sta-debugger/</span>   <span class="out-dir">swadesh-shop/</span>   <span class="out-dir">portfolio/</span>',
           ],
         },
         {

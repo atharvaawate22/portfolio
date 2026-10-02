@@ -12,24 +12,33 @@ let modalOpener = null;
 // IMPORTANT: keep this array length and order in sync with the .project-card
 // elements; the card index drives which entry opens.
 // `linkLabel` customizes the primary button text ("View Live" by default).
+// `highlights` (optional) renders as a bullet list under the description.
 // TODO: replace "#" placeholder links (yoga APK, swadesh live, sta live)
 // and set swadesh's github once those repos/artifacts exist.
 const PROJECTS = [
   {
     id: 1,
-    title: "CETHub",
-    tagline: "MHT-CET Admission Platform",
+    title: "CET Hub",
+    tagline: "MHT-CET admissions · Apr–Jul 2026",
     description:
-      "Full-stack platform helping Maharashtra engineering students navigate MHT-CET CAP admissions. Features a percentile-based college predictor, historical cutoff explorer (2022–2025), consultation booking with Google Meet, CET update tracking, and a role-protected admin dashboard. Deployed across Vercel (frontend), Render (backend) and Supabase (Postgres) with Redis caching, Sentry monitoring, and Playwright e2e.",
+      "Full-stack platform (Next.js, Node.js/Express, TypeScript, PostgreSQL) helping Maharashtra students navigate MHT-CET CAP admissions through cutoff exploration, rank prediction and personalized college shortlisting.",
+    highlights: [
+      "Built 370+ statically rendered per-college pages with SSR/ISR and JSON-LD structured data, fixing a crawler-invisibility issue. During the admission season the site ranked just below the official admissions website for “cutoff explorer” searches on Google.",
+      "Peaked at ~1,000 daily visits during the admission season.",
+      "CI/CD via GitHub Actions: lint, typecheck, coverage-gated tests and Playwright E2E smoke tests, plus keepalive and CAP-deadline reminder cron jobs.",
+      "Launched Avani, a RAG-powered admissions chatbot (hybrid keyword + pgvector retrieval, Gemini for generation). It’s live as an early version under active refinement; WhatsApp integration is in progress.",
+    ],
     tech: [
       "Next.js",
       "TypeScript",
-      "Tailwind",
       "Node.js",
-      "Zod",
+      "Express",
       "PostgreSQL",
+      "pgvector",
+      "Gemini",
       "Redis",
-      "Sentry",
+      "GitHub Actions",
+      "Playwright",
     ],
     image: "/assets/cethub-preview.png",
     imageVariant: "cethub",
@@ -39,15 +48,24 @@ const PROJECTS = [
   {
     id: 2,
     title: "Yoga Therapy App",
-    tagline: "AI pose correction",
+    tagline: "AI pose correction · Feb 2026–now",
     description:
-      "Mobile app that checks yoga poses from the camera. Each frame goes to a FastAPI backend, where MoveNet (TF-Lite) finds 17 body keypoints. The keypoints are normalized around the hip midpoint and scaled by torso width, then a small Keras MLP classifies the pose. Confidence and temporal-stability gates keep the result steady before rule-based checks return joint-specific corrections. The app keeps a practice history and tracks daily streaks.",
+      "React Native (Expo) app that recommends therapeutic yoga poses for 11 health conditions, with real-time AI pose correction.",
+    highlights: [
+      "MoveNet (TFLite) finds body keypoints; a custom feature vector feeds a lightweight MLP (TensorFlow/Keras) that recognizes 15+ poses.",
+      "A rule-based corrective-feedback engine speaks its corrections aloud via text-to-speech.",
+      "10+ screens, offline-first storage, custom routines and streak tracking.",
+      "Inference runs on a FastAPI service, containerized with Docker and now hosted on AWS Lambda.",
+    ],
     tech: [
       "React Native",
+      "Expo",
       "Python",
       "FastAPI",
       "TensorFlow",
       "MoveNet",
+      "Docker",
+      "AWS Lambda",
     ],
     image: null,
     imageVariant: "yoga",
@@ -57,6 +75,36 @@ const PROJECTS = [
   },
   {
     id: 3,
+    title: "Last Known Good",
+    tagline: "VS Code extension · Jul 2026",
+    description:
+      "Published VS Code extension that auto-snapshots a workspace at known-good states (clean compile, passing tests, or a manual checkpoint). Snapshots use pure git plumbing (git stash create, a temporary index, write-tree/commit-tree) and live under shadow refs, so they never show up in git log.",
+    highlights: [
+      "Undoable restore with per-file diff preview.",
+      "Deduplicated by tree hash, with tiered retention.",
+      "Explorer timeline UI and a status bar indicator.",
+    ],
+    tech: ["TypeScript", "VS Code API", "Git plumbing", "esbuild", "node:test"],
+    image: null,
+    imageVariant: "lkg",
+    link: "https://marketplace.visualstudio.com/items?itemName=atharvaawate.last-known-good",
+    linkLabel: "View on Marketplace",
+    github: "https://github.com/atharvaawate22/last-known-good",
+  },
+  {
+    id: 4,
+    title: "STA Debugger",
+    tagline: "Academic group project",
+    description:
+      "Academic group project, built collaboratively and then extended and improved. A full-stack tool that parses OpenSTA static timing analysis reports and diagnoses every violation with a rule-based engine — bottleneck cells, excessive logic depth, clock skew, and severity per path, plus WNS/TNS metrics, worst-path slack charts, and stage-by-stage delay breakdowns. An optional LLM layer (Groq) turns each diagnosis into a plain-English explanation; the tool is fully functional without it. FastAPI + SQLAlchemy backend with JWT auth and per-user analysis history, React + Vite frontend.",
+    tech: ["Python", "FastAPI", "SQLAlchemy", "React", "Groq API"],
+    image: null,
+    imageVariant: "sta",
+    link: "#", // placeholder until deployed
+    github: "https://github.com/atharvaawate22/STA-debugger",
+  },
+  {
+    id: 5,
     title: "Swadesh Shop",
     tagline: "MERN E-commerce Platform",
     description:
@@ -66,37 +114,6 @@ const PROJECTS = [
     imageVariant: "swadesh",
     link: "#", // placeholder until deployed
     github: null, // no public repo; null hides the GitHub button
-  },
-  {
-    id: 4,
-    title: "Last Known Good",
-    tagline: "VS Code Extension",
-    description:
-      "VS Code extension that answers “it was working 40 minutes ago and I don’t know which change broke it.” Snapshots the workspace at known-good states — manually, on error-free compiles, or after passing test/build tasks — and restores any of them in one command with file-by-file diff preview. Snapshots are hidden git commits under refs/lkg/*: invisible to git log and git GUIs, deduplicated by tree hash, never touching the index or working tree. A safety snapshot before every restore makes restores themselves undoable.",
-    tech: [
-      "TypeScript",
-      "VS Code API",
-      "Git plumbing",
-      "esbuild",
-      "node:test",
-    ],
-    image: null,
-    imageVariant: "lkg",
-    link: "https://github.com/atharvaawate22/last-known-good/releases",
-    linkLabel: "View Extension",
-    github: "https://github.com/atharvaawate22/last-known-good",
-  },
-  {
-    id: 5,
-    title: "STA Debugger",
-    tagline: "Rule-based timing analysis",
-    description:
-      "Full-stack tool that parses OpenSTA static timing analysis reports and diagnoses every violation with a rule-based engine — bottleneck cells, excessive logic depth, clock skew, and severity per path, plus WNS/TNS metrics, worst-path slack charts, and stage-by-stage delay breakdowns. An optional LLM layer (Groq) turns each diagnosis into a plain-English explanation; the tool is fully functional without it. FastAPI + SQLAlchemy backend with JWT auth and per-user analysis history, React + Vite frontend.",
-    tech: ["Python", "FastAPI", "SQLAlchemy", "React", "Groq API"],
-    image: null,
-    imageVariant: "sta",
-    link: "#", // placeholder until deployed
-    github: "https://github.com/atharvaawate22/STA-debugger",
   },
   {
     id: 6,
@@ -152,6 +169,18 @@ function openProjectModal(projectId) {
     }
   }
   if (modalDescription) modalDescription.textContent = project.description;
+
+  const highlights = document.getElementById("modalHighlights");
+  if (highlights) {
+    highlights.replaceChildren(
+      ...(project.highlights || []).map((text) => {
+        const li = document.createElement("li");
+        li.textContent = text;
+        return li;
+      })
+    );
+    highlights.hidden = !project.highlights?.length;
+  }
 
   if (techTags) {
     techTags.innerHTML = project.tech
