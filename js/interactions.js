@@ -60,7 +60,7 @@ const PROJECTS = [
     description:
       "React Native (Expo) app that recommends therapeutic yoga poses for 11 health conditions, with real-time AI pose correction.",
     highlights: [
-      "MoveNet (TFLite) finds body keypoints; a custom feature vector feeds a lightweight MLP (TensorFlow/Keras) that recognizes 15+ poses.",
+      "MoveNet (TFLite) finds body keypoints; a custom feature vector feeds a lightweight MLP (TensorFlow/Keras) that recognizes 25+ poses.",
       "A rule-based corrective-feedback engine speaks its corrections aloud via text-to-speech.",
       "10+ screens, offline-first storage, custom routines, a guided Surya Namaskar mode, daily reminders and streak tracking.",
       "Inference runs on a FastAPI service, containerized with Docker and now hosted on AWS Lambda.",
