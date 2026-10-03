@@ -198,8 +198,8 @@
 
 .hero-bg-text {
   position: absolute;
-  bottom: 5%;
-  left: 55%;
+  bottom: 10%;
+  left: 61%;
   transform: translateX(-50%);
   font-family: var(--font-primary);
   font-size: clamp(8rem, 25vw, 20rem);
