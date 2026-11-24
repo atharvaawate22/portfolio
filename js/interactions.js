@@ -82,9 +82,9 @@ const PROJECTS = [
     ],
     image: null,
     imageVariant: "yoga",
-    // The web app; the Android APK is linked from the repo README.
-    link: "https://yoga.atharvaawate.me",
-    linkLabel: "Live demo",
+    // Android APK (latest build from the repo releases).
+    link: "https://github.com/atharvaawate22/yoga-therapy-app/releases/latest/download/yoga-therapy.apk",
+    linkLabel: "Download APK",
     github: "https://github.com/atharvaawate22/yoga-therapy-app",
   },
   {
