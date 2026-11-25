@@ -19,9 +19,16 @@ const ctx = await browser.newContext({
   viewport: { width: 1440, height: 900 },
   deviceScaleFactor: 1,
 });
+// Hide the dismissible announcement banner and the one-time chat greeting.
+await ctx.addInitScript(() => {
+  try {
+    localStorage.setItem("avani_teaser_seen", "1");
+    localStorage.setItem("cethub-announcement-dismissed-version", "2");
+  } catch {}
+});
 const page = await ctx.newPage();
 
-await page.goto("https://cethub.in", {
+await page.goto("https://www.cethub.in/", {
   waitUntil: "networkidle",
   timeout: 60000,
 });
@@ -29,13 +36,10 @@ await page.goto("https://cethub.in", {
 // Give Next.js a beat to settle (any client hydration / animations)
 await page.waitForTimeout(2000);
 
-// Capture just the visible hero area, not the full scroll.
-// JPEG @ q85 ≈ 90 KB vs 1.8 MB for PNG at 2x DPR.
+// Capture just the visible hero area, not the full scroll (PNG, ~500 KB at 1x).
 await page.screenshot({
   path: OUT,
   clip: { x: 0, y: 0, width: 1440, height: 900 },
-  type: "jpeg",
-  quality: 85,
 });
 
 console.log("Saved:", OUT);
