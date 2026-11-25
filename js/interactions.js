@@ -23,11 +23,11 @@ const PROJECTS = [
     description:
       "Full-stack platform (Next.js, Node.js/Express, TypeScript, PostgreSQL) helping Maharashtra students navigate MHT-CET CAP admissions through cutoff exploration, rank prediction and personalized college shortlisting.",
     highlights: [
-      "Built 370+ statically rendered per-college pages with SSR/ISR and JSON-LD structured data, fixing a crawler-invisibility issue. During the admission season the site ranked just below the official admissions website for “cutoff explorer” searches on Google.",
-      "Peaked at ~1,000 daily visits during the admission season.",
+      "Built 390 statically rendered per-college pages with SSR/ISR and JSON-LD structured data, fixing a crawler-invisibility issue. During the admission season the site ranked just below the official admissions website for “cutoff explorer” searches on Google.",
+      "Peaked at 1,000+ visits in a day during the admission season.",
       "CI/CD via GitHub Actions: lint, typecheck, coverage-gated tests and Playwright E2E smoke tests, plus keepalive and CAP-deadline reminder cron jobs.",
       "Consultation booking with slot-conflict checks, Google Meet links via the Google Calendar API and email confirmations, plus a role-protected admin dashboard (JWT, bcrypt, rate limiting).",
-      "Launched Avani, a RAG-powered admissions chatbot (hybrid keyword + pgvector retrieval, Gemini for generation). It’s live as an early version under active refinement; WhatsApp integration is in progress.",
+      "Launched Avani, an admissions chatbot that answers cutoff, CAP and exam-date questions from the official data through keyword routing and FAQ matching, and falls back to RAG (pgvector retrieval, Gemini for generation) for open-ended questions. A WhatsApp channel runs on the same backend and is built, ready to switch on.",
     ],
     tech: [
       "Next.js",
