@@ -14,11 +14,11 @@ concurrency:
   group: pages
   cancel-in-progress: true
 
+# Upload and deploy run as separate jobs (GitHub's recommended layout). In a
+# single job, deploy-pages sometimes looked up the artifact before it was
+# listed and failed with "No artifacts named github-pages".
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -26,5 +26,13 @@ jobs:
       - uses: actions/upload-pages-artifact@v5
         with:
           path: .
+
+  deploy:
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
       - id: deployment
         uses: actions/deploy-pages@v5
