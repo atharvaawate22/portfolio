@@ -58,13 +58,13 @@ const PROJECTS = [
     title: "Yoga Therapy App",
     tagline: "AI pose correction · Feb 2026–now",
     description:
-      "Yoga routines for 11 health conditions with a live AI pose corrector. It ships as an installable web app (PWA) that runs the pose model in the browser, and as a React Native (Expo) Android app backed by a FastAPI service on AWS Lambda.",
+      "Yoga routines for 11 health conditions with a live AI pose corrector. It ships as a React Native (Expo) Android app backed by a FastAPI service on AWS Lambda. A web version (Next.js PWA) that runs the pose model in the browser is in development.",
     highlights: [
       "MoveNet finds body keypoints; a small MLP (TensorFlow/Keras) recognizes 24 poses, and rule-based corrections are spoken aloud.",
-      "Web app (Next.js, TypeScript): MoveNet runs on-device with LiteRT.js (WebGPU or WASM) in a Web Worker, so camera frames never leave the device and it works offline.",
-      "The pose logic is a TypeScript package checked against the Python server on every PR: 100% of 87,696 golden correction outputs, plus full-pipeline and vote cases.",
       "Classifier data cleanup: found a train/serve mismatch and test-set leakage, built an independent Wikimedia test set; macro F1 0.746 → 0.828.",
-      "Tested in CI with pytest, Jest, Vitest, Playwright (offline and fake-camera end-to-end tests) and Lighthouse budgets.",
+      "Web version, done so far: every feature except the camera corrector runs in the browser, and MoveNet runs on-device with LiteRT.js (WebGPU or WASM), checked against the server.",
+      "Web version, in progress: the pose logic ported to a TypeScript package that matches the Python server on 100% of 87,696 golden correction outputs, plus the live corrector, offline support and Web Worker inference.",
+      "Tested in CI with pytest (backend), Jest (app) and Vitest (web).",
     ],
     tech: [
       "Next.js",
